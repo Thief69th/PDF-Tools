@@ -64,10 +64,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     <ThemeContext.Provider value={{ theme, setTheme: handleSetTheme }}>
       <div 
         className={`min-h-screen transition-colors duration-500 ${
-          !mounted ? 'bg-white text-gray-900' :
+          !mounted ? 'bg-white text-black' :
           theme === 'dark' ? 'bg-gray-900 text-white' : 
-          theme === 'warm' ? 'bg-[#fdf6e3] text-[#586e75]' : 
-          'bg-white text-gray-900'
+          theme === 'warm' ? 'bg-[#fdf6e3] text-[#2c1810]' : 
+          'bg-white text-black'
         }`}
         style={!mounted ? { colorScheme: 'light' } : {}}
       >

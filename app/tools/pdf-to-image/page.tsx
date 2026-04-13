@@ -108,7 +108,7 @@ export default function PdfToImagePage() {
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">PDF to Image</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-4 text-lg text-gray-600 dark:text-white">
             Convert each PDF page into a high-quality JPG image instantly.
           </p>
         </div>
@@ -129,7 +129,7 @@ export default function PdfToImagePage() {
               <ImageIcon className="h-8 w-8 text-indigo-600" />
             </div>
             <h3 className="text-xl font-bold">Select PDF File</h3>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            <p className="mt-2 text-sm text-gray-500 dark:text-white">
               Drag and drop your PDF here, or click to browse
             </p>
           </div>
@@ -142,12 +142,12 @@ export default function PdfToImagePage() {
                 </div>
                 <div>
                   <h4 className="font-bold">{file.name}</h4>
-                  <p className="text-sm text-gray-500">{pageCount} Pages detected</p>
+                  <p className="text-sm text-gray-500 dark:text-white">{pageCount} Pages detected</p>
                 </div>
               </div>
               <button 
                 onClick={() => setFile(null)}
-                className="rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="rounded-full p-2 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800"
               >
                 <X size={20} />
               </button>
@@ -200,17 +200,17 @@ export default function PdfToImagePage() {
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">🖼️</div>
             <h3 className="mb-2 font-bold">High Quality</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Export PDF pages as high-resolution JPG images suitable for any use.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Export PDF pages as high-resolution JPG images suitable for any use.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">🔒</div>
             <h3 className="mb-2 font-bold">Private & Secure</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Conversion happens locally. Your documents never leave your browser.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Conversion happens locally. Your documents never leave your browser.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Instant Download</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Images are generated and downloaded automatically in seconds.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Images are generated and downloaded automatically in seconds.</p>
           </div>
         </div>
       </div>

@@ -102,7 +102,7 @@ export default function ExcelToPdfPage() {
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">Excel to PDF</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-4 text-lg text-gray-600 dark:text-white">
             Convert Excel spreadsheets and CSV files into clean, professional PDF tables.
           </p>
         </div>
@@ -123,7 +123,7 @@ export default function ExcelToPdfPage() {
               <FileSpreadsheet className="h-8 w-8 text-green-600" />
             </div>
             <h3 className="text-xl font-bold">Select Excel File</h3>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            <p className="mt-2 text-sm text-gray-500 dark:text-white">
               Drag and drop your .xlsx, .xls, or .csv file here
             </p>
           </div>
@@ -136,12 +136,12 @@ export default function ExcelToPdfPage() {
                 </div>
                 <div>
                   <h4 className="font-bold">{file.name}</h4>
-                  <p className="text-sm text-gray-500">{(file.size / 1024).toFixed(1)} KB</p>
+                  <p className="text-sm text-gray-500 dark:text-white">{(file.size / 1024).toFixed(1)} KB</p>
                 </div>
               </div>
               <button 
                 onClick={() => {setFile(null); setWorkbook(null);}}
-                className="rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="rounded-full p-2 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800"
               >
                 <X size={20} />
               </button>
@@ -194,17 +194,17 @@ export default function ExcelToPdfPage() {
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">📊</div>
             <h3 className="mb-2 font-bold">Table Formatting</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Automatically converts your spreadsheet data into clean, readable PDF tables.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Automatically converts your spreadsheet data into clean, readable PDF tables.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">🔒</div>
             <h3 className="mb-2 font-bold">Private & Secure</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Your data stays in your browser. We never upload your spreadsheets to any server.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Your data stays in your browser. We never upload your spreadsheets to any server.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Fast Conversion</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Get your PDF document in seconds, perfectly formatted for printing or sharing.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Get your PDF document in seconds, perfectly formatted for printing or sharing.</p>
           </div>
         </div>
       </div>

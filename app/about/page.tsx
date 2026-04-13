@@ -5,8 +5,8 @@ export default function AboutPage() {
   return (
     <div className="container-custom py-12 md:py-20">
       <div className="mx-auto max-w-3xl text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">About MultiTool Hub</h1>
-        <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl ">About MultiTool Hub</h1>
+        <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
           We are on a mission to provide the most comprehensive and easy-to-use collection of online tools for digital professionals worldwide.
         </p>
       </div>
@@ -14,10 +14,10 @@ export default function AboutPage() {
       <div className="mt-20 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center">
         <div>
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Our Story</h2>
-          <p className="mt-6 text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-6 text-lg text-gray-600 dark:text-white">
             MultiTool Hub started as a small internal project to help our team of developers and designers save time on repetitive tasks. We soon realized that these tools could benefit millions of others, so we decided to open them up to the world.
           </p>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-4 text-lg text-gray-600 dark:text-white">
             Today, we serve thousands of users daily, providing everything from simple unit converters to complex developer utilities.
           </p>
         </div>
@@ -35,8 +35,8 @@ export default function AboutPage() {
 
       <div className="mt-32">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900">Our Values</h2>
-          <p className="mt-4 text-lg text-gray-600">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Our Values</h2>
+          <p className="mt-4 text-lg text-gray-600 dark:text-white">
             The principles that guide everything we build.
           </p>
         </div>
@@ -63,12 +63,12 @@ export default function AboutPage() {
               icon: Zap,
             },
           ].map((value) => (
-            <div key={value.name} className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
+            <div key={value.name} className="rounded-2xl border border-gray-100 bg-white dark:bg-gray-800 p-8 shadow-sm">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
                 <value.icon size={24} />
               </div>
-              <h3 className="text-lg font-bold text-gray-900">{value.name}</h3>
-              <p className="mt-2 text-sm text-gray-500">{value.description}</p>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white">{value.name}</h3>
+              <p className="mt-2 text-sm text-gray-500 dark:text-white">{value.description}</p>
             </div>
           ))}
         </div>

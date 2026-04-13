@@ -107,12 +107,12 @@ export default function EditMetadataPage() {
           <ArrowRight size={14} />
           <Link href="/tools" className="hover:underline">Tools</Link>
           <ArrowRight size={14} />
-          <span className="text-black">Edit Metadata</span>
+          <span className="text-black dark:text-white">Edit Metadata</span>
         </nav>
 
         <div className="mb-12 text-center">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl text-black">Edit Metadata</h1>
-          <p className="mt-4 text-lg text-black">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl text-black dark:text-white">Edit Metadata</h1>
+          <p className="mt-4 text-lg text-black dark:text-white">
             View and modify PDF properties like Title, Author, Subject, and Keywords.
           </p>
         </div>
@@ -120,7 +120,7 @@ export default function EditMetadataPage() {
         {!file ? (
           <div 
             onClick={() => fileInputRef.current?.click()}
-            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-200 bg-gray-50 p-12 text-center transition-all hover:border-black cursor-pointer"
+            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-200 bg-gray-50 dark:bg-gray-900 p-12 text-center transition-all hover:border-black cursor-pointer"
           >
             <input 
               type="file" 
@@ -129,39 +129,39 @@ export default function EditMetadataPage() {
               accept="application/pdf" 
               className="hidden" 
             />
-            <div className="mb-4 rounded-2xl bg-white p-4 shadow-sm group-hover:scale-110 transition-transform">
+            <div className="mb-4 rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-sm group-hover:scale-110 transition-transform">
               <Info className="h-8 w-8 text-indigo-600" />
             </div>
-            <h3 className="text-xl font-bold text-black">Select PDF File</h3>
-            <p className="mt-2 text-sm text-black">
+            <h3 className="text-xl font-bold text-black dark:text-white">Select PDF File</h3>
+            <p className="mt-2 text-sm text-black dark:text-white">
               Drag and drop your PDF here, or click to browse
             </p>
           </div>
         ) : (
           <div className="space-y-8">
-            <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-white dark:bg-gray-800 p-6 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
                   <FileText size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-black">{file.name}</h4>
-                  <p className="text-sm text-black">Metadata loaded</p>
+                  <h4 className="font-bold text-black dark:text-white">{file.name}</h4>
+                  <p className="text-sm text-black dark:text-white">Metadata loaded</p>
                 </div>
               </div>
               <button 
                 onClick={() => setFile(null)}
-                className="rounded-full p-2 hover:bg-gray-100"
+                className="rounded-full p-2 hover:bg-gray-100 dark:bg-gray-800"
               >
-                <X size={20} className="text-black" />
+                <X size={20} className="text-black dark:text-white" />
               </button>
             </div>
 
-            <div className="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm">
+            <div className="rounded-3xl border border-gray-200 bg-white dark:bg-gray-800 p-8 shadow-sm">
               <div className="mb-6 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <Settings2 size={20} className="text-indigo-600" />
-                  <h3 className="text-lg font-bold text-black">Document Properties</h3>
+                  <h3 className="text-lg font-bold text-black dark:text-white">Document Properties</h3>
                 </div>
                 <button 
                   onClick={removeMetadata}
@@ -174,32 +174,32 @@ export default function EditMetadataPage() {
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-bold text-black mb-2">Title</label>
+                    <label className="block text-sm font-bold text-black dark:text-white mb-2">Title</label>
                     <input 
                       type="text"
                       value={metadata.title}
                       onChange={(e) => setMetadata({...metadata, title: e.target.value})}
-                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black"
+                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black dark:text-white"
                       placeholder="Document Title"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-black mb-2">Author</label>
+                    <label className="block text-sm font-bold text-black dark:text-white mb-2">Author</label>
                     <input 
                       type="text"
                       value={metadata.author}
                       onChange={(e) => setMetadata({...metadata, author: e.target.value})}
-                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black"
+                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black dark:text-white"
                       placeholder="Author Name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-black mb-2">Subject</label>
+                    <label className="block text-sm font-bold text-black dark:text-white mb-2">Subject</label>
                     <input 
                       type="text"
                       value={metadata.subject}
                       onChange={(e) => setMetadata({...metadata, subject: e.target.value})}
-                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black"
+                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black dark:text-white"
                       placeholder="Document Subject"
                     />
                   </div>
@@ -207,32 +207,32 @@ export default function EditMetadataPage() {
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-bold text-black mb-2">Keywords (comma separated)</label>
+                    <label className="block text-sm font-bold text-black dark:text-white mb-2">Keywords (comma separated)</label>
                     <input 
                       type="text"
                       value={metadata.keywords}
                       onChange={(e) => setMetadata({...metadata, keywords: e.target.value})}
-                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black"
+                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black dark:text-white"
                       placeholder="keyword1, keyword2, ..."
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-black mb-2">Creator</label>
+                    <label className="block text-sm font-bold text-black dark:text-white mb-2">Creator</label>
                     <input 
                       type="text"
                       value={metadata.creator}
                       onChange={(e) => setMetadata({...metadata, creator: e.target.value})}
-                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black"
+                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black dark:text-white"
                       placeholder="Application Creator"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-black mb-2">Producer</label>
+                    <label className="block text-sm font-bold text-black dark:text-white mb-2">Producer</label>
                     <input 
                       type="text"
                       value={metadata.producer}
                       onChange={(e) => setMetadata({...metadata, producer: e.target.value})}
-                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black"
+                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black dark:text-white"
                       placeholder="PDF Producer"
                     />
                   </div>
@@ -265,18 +265,18 @@ export default function EditMetadataPage() {
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="rounded-2xl border border-gray-100 p-6">
             <div className="mb-4 text-2xl">📝</div>
-            <h3 className="mb-2 font-bold text-black">Edit Properties</h3>
-            <p className="text-sm text-black opacity-60">Easily update Title, Author, and other internal PDF properties.</p>
+            <h3 className="mb-2 font-bold text-black dark:text-white">Edit Properties</h3>
+            <p className="text-sm text-black dark:text-white opacity-60">Easily update Title, Author, and other internal PDF properties.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 p-6">
             <div className="mb-4 text-2xl">🧹</div>
-            <h3 className="mb-2 font-bold text-black">Remove Metadata</h3>
-            <p className="text-sm text-black opacity-60">Clear all metadata to keep your documents clean and private.</p>
+            <h3 className="mb-2 font-bold text-black dark:text-white">Remove Metadata</h3>
+            <p className="text-sm text-black dark:text-white opacity-60">Clear all metadata to keep your documents clean and private.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 p-6">
             <div className="mb-4 text-2xl">🔒</div>
-            <h3 className="mb-2 font-bold text-black">Local Only</h3>
-            <p className="text-sm text-black opacity-60">All metadata editing happens in your browser. No files are uploaded.</p>
+            <h3 className="mb-2 font-bold text-black dark:text-white">Local Only</h3>
+            <p className="text-sm text-black dark:text-white opacity-60">All metadata editing happens in your browser. No files are uploaded.</p>
           </div>
         </div>
       </div>

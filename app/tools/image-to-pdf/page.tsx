@@ -149,7 +149,7 @@ export default function ImageToPdfPage() {
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">Image to PDF</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-4 text-lg text-gray-600 dark:text-white">
             Convert JPG, PNG, WEBP and other images into a single PDF document. Merge multiple images or save each on a separate page.
           </p>
         </div>
@@ -171,7 +171,7 @@ export default function ImageToPdfPage() {
               <Upload className="h-8 w-8 text-indigo-600" />
             </div>
             <h3 className="text-xl font-bold">Select Images</h3>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            <p className="mt-2 text-sm text-gray-500 dark:text-white">
               Drag and drop your images here, or click to browse
             </p>
             <div className="mt-6 flex gap-2">
@@ -222,14 +222,14 @@ export default function ImageToPdfPage() {
                           <button 
                             onClick={() => moveImage(index, 'up')}
                             disabled={index === 0}
-                            className="rounded-full bg-white p-2 text-black hover:bg-gray-100 disabled:opacity-50"
+                            className="rounded-full bg-white dark:bg-gray-800 p-2 text-black dark:text-white hover:bg-gray-100 dark:bg-gray-800 disabled:opacity-50"
                           >
                             <MoveUp size={16} />
                           </button>
                           <button 
                             onClick={() => moveImage(index, 'down')}
                             disabled={index === images.length - 1}
-                            className="rounded-full bg-white p-2 text-black hover:bg-gray-100 disabled:opacity-50"
+                            className="rounded-full bg-white dark:bg-gray-800 p-2 text-black dark:text-white hover:bg-gray-100 dark:bg-gray-800 disabled:opacity-50"
                           >
                             <MoveDown size={16} />
                           </button>
@@ -301,7 +301,7 @@ export default function ImageToPdfPage() {
                     </>
                   )}
                 </button>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-xs text-gray-500 dark:text-white">
                   {images.length} image{images.length !== 1 ? 's' : ''} selected. All processing is 100% local.
                 </p>
               </div>
@@ -327,7 +327,7 @@ export default function ImageToPdfPage() {
                         key={`preview-${img.id}`}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="relative aspect-[1/1.414] w-full bg-white shadow-xl mx-auto flex items-center justify-center overflow-hidden"
+                        className="relative aspect-[1/1.414] w-full bg-white dark:bg-gray-800 shadow-xl mx-auto flex items-center justify-center overflow-hidden"
                         style={{ padding: `${margin * 2}px` }}
                       >
                         <div className="relative w-full h-full flex items-center justify-center">
@@ -367,17 +367,17 @@ export default function ImageToPdfPage() {
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">🔒</div>
             <h3 className="mb-2 font-bold">Privacy First</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Your images never leave your browser. Processing happens entirely on your device.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Your images never leave your browser. Processing happens entirely on your device.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Fast & Free</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Convert as many images as you want without any limits or hidden costs.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Convert as many images as you want without any limits or hidden costs.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">📱</div>
             <h3 className="mb-2 font-bold">Any Device</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Works perfectly on mobile, tablet, and desktop browsers.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Works perfectly on mobile, tablet, and desktop browsers.</p>
           </div>
         </div>
       </div>

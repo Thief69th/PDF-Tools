@@ -114,7 +114,7 @@ export default function MergePdfPage() {
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">Merge PDF</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-4 text-lg text-gray-600 dark:text-white">
             Combine multiple PDF files into one single document in seconds.
           </p>
         </div>
@@ -136,7 +136,7 @@ export default function MergePdfPage() {
               <Files className="h-8 w-8 text-indigo-600" />
             </div>
             <h3 className="text-xl font-bold">Select PDF Files</h3>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            <p className="mt-2 text-sm text-gray-500 dark:text-white">
               Drag and drop your PDFs here, or click to browse
             </p>
           </div>
@@ -159,7 +159,7 @@ export default function MergePdfPage() {
                       </div>
                       <div className="overflow-hidden">
                         <h4 className="truncate text-sm font-bold">{pdf.name}</h4>
-                        <p className="text-xs text-gray-500">{pdf.size}</p>
+                        <p className="text-xs text-gray-500 dark:text-white">{pdf.size}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -167,7 +167,7 @@ export default function MergePdfPage() {
                         <button 
                           onClick={() => movePdf(index, 'up')}
                           disabled={index === 0}
-                          className="rounded-lg p-1.5 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-30"
+                          className="rounded-lg p-1.5 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800 disabled:opacity-30"
                           title="Move Up"
                         >
                           <MoveUp size={16} />
@@ -175,7 +175,7 @@ export default function MergePdfPage() {
                         <button 
                           onClick={() => movePdf(index, 'down')}
                           disabled={index === pdfs.length - 1}
-                          className="rounded-lg p-1.5 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-30"
+                          className="rounded-lg p-1.5 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800 disabled:opacity-30"
                           title="Move Down"
                         >
                           <MoveDown size={16} />
@@ -229,7 +229,7 @@ export default function MergePdfPage() {
                 )}
               </button>
             </div>
-            <p className="text-center text-xs text-gray-500 dark:text-gray-400">
+            <p className="text-center text-xs text-gray-500 dark:text-white">
               {pdfs.length} file{pdfs.length !== 1 ? 's' : ''} selected. All processing is 100% local.
             </p>
           </div>
@@ -240,17 +240,17 @@ export default function MergePdfPage() {
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">🔒</div>
             <h3 className="mb-2 font-bold">Secure Merging</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Your files are merged locally in your browser. No data is sent to any server.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Your files are merged locally in your browser. No data is sent to any server.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Instant Results</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Combine even large PDF files in seconds without waiting for uploads.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Combine even large PDF files in seconds without waiting for uploads.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">📑</div>
             <h3 className="mb-2 font-bold">Maintain Quality</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">The original quality of your PDF pages is preserved during the merge.</p>
+            <p className="text-sm text-gray-500 dark:text-white">The original quality of your PDF pages is preserved during the merge.</p>
           </div>
         </div>
       </div>

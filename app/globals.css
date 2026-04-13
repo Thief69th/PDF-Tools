@@ -5,30 +5,54 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
+/* ── Base body text per theme ── */
 @layer base {
   body {
-    @apply transition-colors duration-500 text-black;
+    @apply transition-colors duration-500;
+    color: #000000; /* day / light default */
   }
-  
-  .text-gray-400, .text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800, .text-gray-900 {
-    color: #000000 !important;
+
+  /* Night / Dark mode → pure white text */
+  .dark body {
+    color: #ffffff;
   }
-  
-  .dark .text-gray-400, .dark .text-gray-500, .dark .text-gray-600, .dark .text-gray-700, .dark .text-gray-800, .dark .text-gray-900 {
-    color: #000000 !important;
+
+  /* Warm mode → dark warm-brown, very readable on cream */
+  .warm body {
+    color: #2c1810;
   }
 }
 
+/* ── CSS variable tokens ── */
 .dark {
   --background: 17 24 39;
-  --foreground: 0 0 0;
+  --foreground: 255 255 255; /* Pure White */
 }
 
 .warm {
   --background: 253 246 227;
-  --foreground: 0 0 0;
+  --foreground: 44 24 16; /* #2c1810 warm-dark-brown */
 }
 
+/* ── Ensure warm-mode inherits correct text everywhere ── */
+.warm * {
+  /* inherit by default; override only where explicitly needed */
+  border-color: inherit;
+}
+
+/* Links inside warm mode */
+.warm a:not([class*="text-"]) {
+  color: #2c1810;
+}
+
+/* Muted / secondary text in warm mode */
+.warm .text-gray-500,
+.warm .text-gray-600,
+.warm .text-gray-400 {
+  color: #7a5c4e !important;
+}
+
+/* ── Component styles ── */
 @layer components {
   .container-custom {
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
@@ -49,5 +73,9 @@
 
   .dark .tool-card:hover {
     box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  .warm .tool-card:hover {
+    box-shadow: 0 8px 24px rgba(44,24,16,0.12);
   }
 }

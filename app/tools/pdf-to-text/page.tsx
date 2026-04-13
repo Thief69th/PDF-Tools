@@ -96,7 +96,7 @@ export default function PdfToTextPage() {
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">PDF to Text</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-4 text-lg text-gray-600 dark:text-white">
             Extract all text content from your PDF document in seconds.
           </p>
         </div>
@@ -117,7 +117,7 @@ export default function PdfToTextPage() {
               <Type className="h-8 w-8 text-indigo-600" />
             </div>
             <h3 className="text-xl font-bold">Select PDF File</h3>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            <p className="mt-2 text-sm text-gray-500 dark:text-white">
               Drag and drop your PDF here, or click to browse
             </p>
           </div>
@@ -130,12 +130,12 @@ export default function PdfToTextPage() {
                 </div>
                 <div>
                   <h4 className="font-bold">{file.name}</h4>
-                  <p className="text-sm text-gray-500">Ready to extract text</p>
+                  <p className="text-sm text-gray-500 dark:text-white">Ready to extract text</p>
                 </div>
               </div>
               <button 
                 onClick={() => {setFile(null); setExtractedText('');}}
-                className="rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="rounded-full p-2 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800"
               >
                 <X size={20} />
               </button>
@@ -168,7 +168,7 @@ export default function PdfToTextPage() {
                   <div className="flex gap-2">
                     <button 
                       onClick={copyToClipboard}
-                      className="flex items-center gap-2 rounded-lg border border-gray-200 dark:border-gray-800 px-3 py-1.5 text-xs font-bold hover:bg-gray-50 dark:hover:bg-gray-800"
+                      className="flex items-center gap-2 rounded-lg border border-gray-200 dark:border-gray-800 px-3 py-1.5 text-xs font-bold hover:bg-gray-50 dark:bg-gray-900 dark:hover:bg-gray-800"
                     >
                       {copied ? <Check size={14} className="text-green-500" /> : <Copy size={14} />}
                       {copied ? 'Copied!' : 'Copy Text'}
@@ -195,17 +195,17 @@ export default function PdfToTextPage() {
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">📝</div>
             <h3 className="mb-2 font-bold">Text Extraction</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Quickly pull all readable text from your PDF documents for editing or analysis.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Quickly pull all readable text from your PDF documents for editing or analysis.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">🔒</div>
             <h3 className="mb-2 font-bold">Privacy First</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Text extraction happens entirely in your browser. Your data never leaves your device.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Text extraction happens entirely in your browser. Your data never leaves your device.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Fast & Free</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">No limits on file size or page count. Extract text from any PDF instantly.</p>
+            <p className="text-sm text-gray-500 dark:text-white">No limits on file size or page count. Extract text from any PDF instantly.</p>
           </div>
         </div>
       </div>

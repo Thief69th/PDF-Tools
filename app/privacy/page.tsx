@@ -4,8 +4,8 @@ export default function PrivacyPage() {
   return (
     <div className="container-custom py-12 md:py-20">
       <div className="mx-auto max-w-3xl">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-8">Privacy Policy</h1>
-        <div className="prose prose-indigo prose-lg max-w-none text-gray-600">
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl mb-8">Privacy Policy</h1>
+        <div className="prose prose-indigo prose-lg max-w-none text-gray-600 dark:text-white">
           <p className="lead">Last updated: March 16, 2024</p>
           
           <h2>1. Introduction</h2>

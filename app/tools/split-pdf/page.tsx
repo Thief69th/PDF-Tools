@@ -113,7 +113,7 @@ export default function SplitPdfPage() {
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">Split PDF</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-4 text-lg text-gray-600 dark:text-white">
             Extract specific pages from your PDF or save each page as a separate document.
           </p>
         </div>
@@ -134,7 +134,7 @@ export default function SplitPdfPage() {
               <Scissors className="h-8 w-8 text-indigo-600" />
             </div>
             <h3 className="text-xl font-bold">Select PDF File</h3>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            <p className="mt-2 text-sm text-gray-500 dark:text-white">
               Drag and drop your PDF here, or click to browse
             </p>
           </div>
@@ -147,12 +147,12 @@ export default function SplitPdfPage() {
                 </div>
                 <div>
                   <h4 className="font-bold">{file.name}</h4>
-                  <p className="text-sm text-gray-500">{pageCount} Pages</p>
+                  <p className="text-sm text-gray-500 dark:text-white">{pageCount} Pages</p>
                 </div>
               </div>
               <button 
                 onClick={() => setFile(null)}
-                className="rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="rounded-full p-2 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800"
               >
                 <X size={20} />
               </button>
@@ -173,7 +173,7 @@ export default function SplitPdfPage() {
                     className="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
                   />
                 </div>
-                <div className="flex items-center gap-2 text-xs text-gray-500">
+                <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-white">
                   <CheckCircle2 size={14} className="text-green-500" />
                   <span>Total pages available: {pageCount}</span>
                 </div>
@@ -207,17 +207,17 @@ export default function SplitPdfPage() {
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">✂️</div>
             <h3 className="mb-2 font-bold">Precise Extraction</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Extract exactly the pages you need with flexible range selection.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Extract exactly the pages you need with flexible range selection.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">🔒</div>
             <h3 className="mb-2 font-bold">Safe & Private</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Your documents are processed locally. We never see your content.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Your documents are processed locally. We never see your content.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Fast Processing</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Split large PDFs instantly without any server-side delays.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Split large PDFs instantly without any server-side delays.</p>
           </div>
         </div>
       </div>

@@ -120,12 +120,12 @@ export default function AddQrCodePage() {
           <ArrowRight size={14} />
           <Link href="/tools" className="hover:underline">Tools</Link>
           <ArrowRight size={14} />
-          <span className="text-black">Add QR Code</span>
+          <span className="text-black dark:text-white">Add QR Code</span>
         </nav>
 
         <div className="mb-12 text-center">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl text-black">Add QR Code</h1>
-          <p className="mt-4 text-lg text-black">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl text-black dark:text-white">Add QR Code</h1>
+          <p className="mt-4 text-lg text-black dark:text-white">
             Generate and place QR codes on your PDF documents for easy link sharing.
           </p>
         </div>
@@ -133,7 +133,7 @@ export default function AddQrCodePage() {
         {!file ? (
           <div 
             onClick={() => fileInputRef.current?.click()}
-            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-200 bg-gray-50 p-12 text-center transition-all hover:border-black cursor-pointer"
+            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-200 bg-gray-50 dark:bg-gray-900 p-12 text-center transition-all hover:border-black cursor-pointer"
           >
             <input 
               type="file" 
@@ -142,49 +142,49 @@ export default function AddQrCodePage() {
               accept="application/pdf" 
               className="hidden" 
             />
-            <div className="mb-4 rounded-2xl bg-white p-4 shadow-sm group-hover:scale-110 transition-transform">
+            <div className="mb-4 rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-sm group-hover:scale-110 transition-transform">
               <QrIcon className="h-8 w-8 text-indigo-600" />
             </div>
-            <h3 className="text-xl font-bold text-black">Select PDF File</h3>
-            <p className="mt-2 text-sm text-black">
+            <h3 className="text-xl font-bold text-black dark:text-white">Select PDF File</h3>
+            <p className="mt-2 text-sm text-black dark:text-white">
               Drag and drop your PDF here, or click to browse
             </p>
           </div>
         ) : (
           <div className="space-y-8">
-            <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-white dark:bg-gray-800 p-6 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
                   <FileText size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-black">{file.name}</h4>
-                  <p className="text-sm text-black">{totalPages} Pages detected</p>
+                  <h4 className="font-bold text-black dark:text-white">{file.name}</h4>
+                  <p className="text-sm text-black dark:text-white">{totalPages} Pages detected</p>
                 </div>
               </div>
               <button 
                 onClick={() => setFile(null)}
-                className="rounded-full p-2 hover:bg-gray-100"
+                className="rounded-full p-2 hover:bg-gray-100 dark:bg-gray-800"
               >
-                <X size={20} className="text-black" />
+                <X size={20} className="text-black dark:text-white" />
               </button>
             </div>
 
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               {/* QR Content */}
-              <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
-                <h3 className="text-lg font-bold text-black mb-6">QR Code Content</h3>
+              <div className="rounded-3xl border border-gray-200 bg-white dark:bg-gray-800 p-6 shadow-sm">
+                <h3 className="text-lg font-bold text-black dark:text-white mb-6">QR Code Content</h3>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-bold text-black mb-2">Text or URL</label>
+                    <label className="block text-sm font-bold text-black dark:text-white mb-2">Text or URL</label>
                     <textarea 
                       value={qrText}
                       onChange={(e) => setQrText(e.target.value)}
-                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black h-32 resize-none"
+                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black dark:text-white h-32 resize-none"
                       placeholder="Enter the URL or text for the QR code..."
                     />
                   </div>
-                  <div className="flex justify-center p-4 bg-gray-50 rounded-2xl border border-gray-100">
+                  <div className="flex justify-center p-4 bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-100">
                     {qrImage ? (
                       <img src={qrImage} alt="QR Preview" className="h-40 w-40 object-contain" />
                     ) : (
@@ -197,27 +197,27 @@ export default function AddQrCodePage() {
               </div>
 
               {/* Placement Settings */}
-              <div className="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm">
+              <div className="rounded-3xl border border-gray-200 bg-white dark:bg-gray-800 p-6 shadow-sm">
                 <div className="mb-6 flex items-center gap-2">
                   <Settings2 size={20} className="text-indigo-600" />
-                  <h3 className="text-lg font-bold text-black">Placement Settings</h3>
+                  <h3 className="text-lg font-bold text-black dark:text-white">Placement Settings</h3>
                 </div>
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-bold text-black mb-2">Page Number (1-{totalPages})</label>
+                    <label className="block text-sm font-bold text-black dark:text-white mb-2">Page Number (1-{totalPages})</label>
                     <input 
                       type="number"
                       min={1}
                       max={totalPages}
                       value={pageNumber}
                       onChange={(e) => setPageNumber(Math.min(totalPages, Math.max(1, parseInt(e.target.value) || 1)))}
-                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black"
+                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black dark:text-white"
                     />
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-bold text-black mb-2">X Position (%)</label>
+                      <label className="block text-sm font-bold text-black dark:text-white mb-2">X Position (%)</label>
                       <input 
                         type="range"
                         min={0}
@@ -228,7 +228,7 @@ export default function AddQrCodePage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-black mb-2">Y Position (%)</label>
+                      <label className="block text-sm font-bold text-black dark:text-white mb-2">Y Position (%)</label>
                       <input 
                         type="range"
                         min={0}
@@ -241,7 +241,7 @@ export default function AddQrCodePage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-black mb-2">Scale ({Math.round(scale * 100)}%)</label>
+                    <label className="block text-sm font-bold text-black dark:text-white mb-2">Scale ({Math.round(scale * 100)}%)</label>
                     <input 
                       type="range"
                       min={0.1}
@@ -281,18 +281,18 @@ export default function AddQrCodePage() {
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="rounded-2xl border border-gray-100 p-6">
             <div className="mb-4 text-2xl">🔗</div>
-            <h3 className="mb-2 font-bold text-black">Link Sharing</h3>
-            <p className="text-sm text-black opacity-60">Add QR codes to your documents so readers can quickly access websites or digital content.</p>
+            <h3 className="mb-2 font-bold text-black dark:text-white">Link Sharing</h3>
+            <p className="text-sm text-black dark:text-white opacity-60">Add QR codes to your documents so readers can quickly access websites or digital content.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 p-6">
             <div className="mb-4 text-2xl">📍</div>
-            <h3 className="mb-2 font-bold text-black">Precise Placement</h3>
-            <p className="text-sm text-black opacity-60">Place the QR code on any page and adjust its position and size with precision.</p>
+            <h3 className="mb-2 font-bold text-black dark:text-white">Precise Placement</h3>
+            <p className="text-sm text-black dark:text-white opacity-60">Place the QR code on any page and adjust its position and size with precision.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 p-6">
             <div className="mb-4 text-2xl">🔒</div>
-            <h3 className="mb-2 font-bold text-black">Private Processing</h3>
-            <p className="text-sm text-black opacity-60">QR generation and PDF embedding happen entirely in your browser.</p>
+            <h3 className="mb-2 font-bold text-black dark:text-white">Private Processing</h3>
+            <p className="text-sm text-black dark:text-white opacity-60">QR generation and PDF embedding happen entirely in your browser.</p>
           </div>
         </div>
       </div>

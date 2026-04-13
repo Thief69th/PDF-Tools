@@ -5,8 +5,8 @@ export default function ContactPage() {
   return (
     <div className="container-custom py-12 md:py-20">
       <div className="mx-auto max-w-3xl text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Contact Us</h1>
-        <p className="mt-6 text-lg leading-8 text-gray-600">
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl">Contact Us</h1>
+        <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-white">
           Have a question, feedback, or a tool suggestion? We&apos;d love to hear from you.
         </p>
       </div>
@@ -40,51 +40,51 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <form className="space-y-6 rounded-3xl border border-gray-100 bg-white p-8 shadow-xl md:p-12">
+        <form className="space-y-6 rounded-3xl border border-gray-100 bg-white dark:bg-gray-800 p-8 shadow-xl md:p-12">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div>
-              <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
+              <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900 dark:text-white">
                 First name
               </label>
               <input
                 type="text"
                 name="first-name"
                 id="first-name"
-                className="mt-2.5 block w-full rounded-xl border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="mt-2.5 block w-full rounded-xl border-0 px-3.5 py-2 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
             <div>
-              <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900">
+              <label htmlFor="last-name" className="block text-sm font-semibold leading-6 text-gray-900 dark:text-white">
                 Last name
               </label>
               <input
                 type="text"
                 name="last-name"
                 id="last-name"
-                className="mt-2.5 block w-full rounded-xl border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="mt-2.5 block w-full rounded-xl border-0 px-3.5 py-2 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900 dark:text-white">
               Email
             </label>
             <input
               type="email"
               name="email"
               id="email"
-              className="mt-2.5 block w-full rounded-xl border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="mt-2.5 block w-full rounded-xl border-0 px-3.5 py-2 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900 dark:text-white">
               Message
             </label>
             <textarea
               name="message"
               id="message"
               rows={4}
-              className="mt-2.5 block w-full rounded-xl border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              className="mt-2.5 block w-full rounded-xl border-0 px-3.5 py-2 text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
           <button

@@ -103,7 +103,7 @@ export default function AddWatermarkPage() {
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">Add Watermark</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          <p className="mt-4 text-lg text-gray-600 dark:text-white">
             Protect your PDF documents with custom text watermarks.
           </p>
         </div>
@@ -124,7 +124,7 @@ export default function AddWatermarkPage() {
               <Type className="h-8 w-8 text-indigo-600" />
             </div>
             <h3 className="text-xl font-bold">Select PDF File</h3>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            <p className="mt-2 text-sm text-gray-500 dark:text-white">
               Drag and drop your PDF here, or click to browse
             </p>
           </div>
@@ -138,12 +138,12 @@ export default function AddWatermarkPage() {
                   </div>
                   <div className="overflow-hidden">
                     <h4 className="font-bold truncate">{file.name}</h4>
-                    <p className="text-sm text-gray-500">{pageCount} Pages</p>
+                    <p className="text-sm text-gray-500 dark:text-white">{pageCount} Pages</p>
                   </div>
                 </div>
                 <button 
                   onClick={() => setFile(null)}
-                  className="rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+                  className="rounded-full p-2 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800"
                 >
                   <X size={20} />
                 </button>
@@ -233,7 +233,7 @@ export default function AddWatermarkPage() {
                   <Layout size={20} className="text-indigo-600" />
                   Preview
                 </h3>
-                <div className="relative aspect-[1/1.414] w-full bg-white shadow-xl border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden flex items-center justify-center">
+                <div className="relative aspect-[1/1.414] w-full bg-white dark:bg-gray-800 shadow-xl border border-gray-100 dark:border-gray-800 rounded-xl overflow-hidden flex items-center justify-center">
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div 
                       style={{ 
@@ -263,17 +263,17 @@ export default function AddWatermarkPage() {
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">🛡️</div>
             <h3 className="mb-2 font-bold">Protect Content</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Prevent unauthorized use of your documents by adding visible watermarks.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Prevent unauthorized use of your documents by adding visible watermarks.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">🎨</div>
             <h3 className="mb-2 font-bold">Customizable</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Adjust text, size, rotation, and transparency to fit your needs perfectly.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Adjust text, size, rotation, and transparency to fit your needs perfectly.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Fast Processing</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Apply watermarks to all pages of your PDF instantly in your browser.</p>
+            <p className="text-sm text-gray-500 dark:text-white">Apply watermarks to all pages of your PDF instantly in your browser.</p>
           </div>
         </div>
       </div>

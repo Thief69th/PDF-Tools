@@ -97,20 +97,20 @@ export default function HomePage() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="max-w-3xl mx-auto px-4 pt-16 pb-12 text-center">
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-black">
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-black dark:text-white">
           Convert & Manage PDFs Easily
         </h1>
-        <p className="mt-4 text-black text-base sm:text-lg max-w-xl mx-auto">
+        <p className="mt-4 text-black dark:text-white text-base sm:text-lg max-w-xl mx-auto">
           All essential PDF tools in one place. Fast. Private. Works in your browser.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="/tools/merge-pdf" className="px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black text-sm font-semibold rounded-xl hover:opacity-80 transition-opacity">
             Merge PDF
           </Link>
-          <Link href="/tools/compress-pdf" className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+          <Link href="/tools/compress-pdf" className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800 transition-colors">
             Compress PDF
           </Link>
-          <Link href="/tools/image-to-pdf" className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+          <Link href="/tools/image-to-pdf" className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800 transition-colors">
             Image to PDF
           </Link>
         </div>
@@ -155,8 +155,8 @@ export default function HomePage() {
               <div className="mb-3 flex justify-center">
                 <feature.icon className="h-8 w-8 text-indigo-600" />
               </div>
-              <h3 className="font-semibold mb-1 text-black">{feature.title}</h3>
-              <p className="text-sm text-black">{feature.desc}</p>
+              <h3 className="font-semibold mb-1 text-black dark:text-white">{feature.title}</h3>
+              <p className="text-sm text-black dark:text-white">{feature.desc}</p>
             </div>
           ))}
         </div>
@@ -176,8 +176,8 @@ export default function HomePage() {
                 {post.icon}
               </div>
               <div className="p-4">
-                <h3 className="font-semibold mb-1 text-black">{post.title}</h3>
-                <p className="text-sm text-black mb-2">{post.desc}</p>
+                <h3 className="font-semibold mb-1 text-black dark:text-white">{post.title}</h3>
+                <p className="text-sm text-black dark:text-white mb-2">{post.desc}</p>
                 <span className="text-sm font-medium text-indigo-600 hover:underline">Read More →</span>
               </div>
             </div>
@@ -187,9 +187,9 @@ export default function HomePage() {
 
       {/* CTA Section */}
       <section className="max-w-3xl mx-auto px-4 pb-16 text-center w-full">
-        <div className="p-10 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 text-black">
+        <div className="p-10 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 text-black dark:text-white">
           <h2 className="text-2xl font-bold mb-2">Need to work with PDFs?</h2>
-          <p className="text-black mb-6">Explore all tools now.</p>
+          <p className="text-black dark:text-white mb-6">Explore all tools now.</p>
           <Link href="/tools" className="inline-block px-6 py-3 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-xl hover:opacity-80 transition-opacity text-sm">
             View All Tools
           </Link>

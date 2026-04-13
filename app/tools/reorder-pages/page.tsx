@@ -120,12 +120,12 @@ export default function ReorderPagesPage() {
           <ArrowRight size={14} />
           <Link href="/tools" className="hover:underline">Tools</Link>
           <ArrowRight size={14} />
-          <span className="text-black">Reorder Pages</span>
+          <span className="text-black dark:text-white">Reorder Pages</span>
         </nav>
 
         <div className="mb-12 text-center">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl text-black">Reorder Pages</h1>
-          <p className="mt-4 text-lg text-black">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl text-black dark:text-white">Reorder Pages</h1>
+          <p className="mt-4 text-lg text-black dark:text-white">
             Drag and drop pages to rearrange your PDF document exactly how you want it.
           </p>
         </div>
@@ -133,7 +133,7 @@ export default function ReorderPagesPage() {
         {!file ? (
           <div 
             onClick={() => fileInputRef.current?.click()}
-            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-200 bg-gray-50 p-12 text-center transition-all hover:border-black cursor-pointer"
+            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-200 bg-gray-50 dark:bg-gray-900 p-12 text-center transition-all hover:border-black cursor-pointer"
           >
             <input 
               type="file" 
@@ -142,38 +142,38 @@ export default function ReorderPagesPage() {
               accept="application/pdf" 
               className="hidden" 
             />
-            <div className="mb-4 rounded-2xl bg-white p-4 shadow-sm group-hover:scale-110 transition-transform">
+            <div className="mb-4 rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-sm group-hover:scale-110 transition-transform">
               <LayoutList className="h-8 w-8 text-indigo-600" />
             </div>
-            <h3 className="text-xl font-bold text-black">Select PDF File</h3>
-            <p className="mt-2 text-sm text-black">
+            <h3 className="text-xl font-bold text-black dark:text-white">Select PDF File</h3>
+            <p className="mt-2 text-sm text-black dark:text-white">
               Drag and drop your PDF here, or click to browse
             </p>
           </div>
         ) : (
           <div className="space-y-8">
-            <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-white dark:bg-gray-800 p-6 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
                   <FileText size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-black">{file.name}</h4>
-                  <p className="text-sm text-black">{thumbnails.length} Pages detected</p>
+                  <h4 className="font-bold text-black dark:text-white">{file.name}</h4>
+                  <p className="text-sm text-black dark:text-white">{thumbnails.length} Pages detected</p>
                 </div>
               </div>
               <button 
                 onClick={() => {setFile(null); setThumbnails([]);}}
-                className="rounded-full p-2 hover:bg-gray-100"
+                className="rounded-full p-2 hover:bg-gray-100 dark:bg-gray-800"
               >
-                <X size={20} className="text-black" />
+                <X size={20} className="text-black dark:text-white" />
               </button>
             </div>
 
             {isRendering ? (
               <div className="flex flex-col items-center justify-center py-20">
                 <Loader2 className="h-10 w-10 animate-spin text-indigo-600 mb-4" />
-                <p className="text-black font-medium">Generating page previews...</p>
+                <p className="text-black dark:text-white font-medium">Generating page previews...</p>
               </div>
             ) : (
               <div className="space-y-8">
@@ -189,7 +189,7 @@ export default function ReorderPagesPage() {
                       value={thumb}
                       className="group relative cursor-grab active:cursor-grabbing"
                     >
-                      <div className="aspect-[3/4] overflow-hidden rounded-xl border border-gray-200 bg-gray-50 shadow-sm transition-all group-hover:border-black">
+                      <div className="aspect-[3/4] overflow-hidden rounded-xl border border-gray-200 bg-gray-50 dark:bg-gray-900 shadow-sm transition-all group-hover:border-black">
                         <img 
                           src={thumb.url} 
                           alt={`Page ${thumb.index + 1}`} 
@@ -199,10 +199,10 @@ export default function ReorderPagesPage() {
                           {thumbnails.indexOf(thumb) + 1}
                         </div>
                         <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                          <GripVertical size={16} className="text-black" />
+                          <GripVertical size={16} className="text-black dark:text-white" />
                         </div>
                       </div>
-                      <p className="mt-2 text-center text-[10px] font-bold text-black opacity-50 uppercase tracking-widest">
+                      <p className="mt-2 text-center text-[10px] font-bold text-black dark:text-white opacity-50 uppercase tracking-widest">
                         Original Page {thumb.index + 1}
                       </p>
                     </Reorder.Item>
@@ -236,18 +236,18 @@ export default function ReorderPagesPage() {
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="rounded-2xl border border-gray-100 p-6">
             <div className="mb-4 text-2xl">🖱️</div>
-            <h3 className="mb-2 font-bold text-black">Drag & Drop</h3>
-            <p className="text-sm text-black opacity-60">Easily rearrange pages by dragging them into your preferred order.</p>
+            <h3 className="mb-2 font-bold text-black dark:text-white">Drag & Drop</h3>
+            <p className="text-sm text-black dark:text-white opacity-60">Easily rearrange pages by dragging them into your preferred order.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 p-6">
             <div className="mb-4 text-2xl">🖼️</div>
-            <h3 className="mb-2 font-bold text-black">Visual Previews</h3>
-            <p className="text-sm text-black opacity-60">See high-quality thumbnails of every page to make reordering simple.</p>
+            <h3 className="mb-2 font-bold text-black dark:text-white">Visual Previews</h3>
+            <p className="text-sm text-black dark:text-white opacity-60">See high-quality thumbnails of every page to make reordering simple.</p>
           </div>
           <div className="rounded-2xl border border-gray-100 p-6">
             <div className="mb-4 text-2xl">🔒</div>
-            <h3 className="mb-2 font-bold text-black">Private & Secure</h3>
-            <p className="text-sm text-black opacity-60">All page rendering and reordering happens locally in your browser.</p>
+            <h3 className="mb-2 font-bold text-black dark:text-white">Private & Secure</h3>
+            <p className="text-sm text-black dark:text-white opacity-60">All page rendering and reordering happens locally in your browser.</p>
           </div>
         </div>
       </div>

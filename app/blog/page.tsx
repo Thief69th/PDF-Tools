@@ -49,8 +49,8 @@ export default function BlogPage() {
   return (
     <div className="container-custom py-12 md:py-20">
       <div className="mx-auto max-w-2xl text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">Our Blog</h1>
-        <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl ">Our Blog</h1>
+        <p className="mt-4 text-lg text-gray-600 dark:text-white">
           Insights, tutorials, and news from the world of technology and productivity.
         </p>
       </div>
@@ -73,15 +73,15 @@ export default function BlogPage() {
             </Link>
             <div className="flex flex-col justify-center">
               <div className="flex items-center gap-x-4 text-xs">
-                <time dateTime={post.date} className="text-gray-500">{post.date}</time>
+                <time dateTime={post.date} className="text-gray-500 dark:text-white">{post.date}</time>
                 <span className="rounded-full bg-indigo-50 px-3 py-1.5 font-medium text-indigo-600 dark:bg-indigo-900/30 dark:text-indigo-400">
                   {post.category}
                 </span>
               </div>
-              <h2 className="mt-3 text-xl font-bold text-gray-900 hover:text-indigo-600 dark:text-white dark:hover:text-indigo-400">
+              <h2 className="mt-3 text-xl font-bold text-gray-900 dark:text-white hover:text-indigo-600  dark:hover:text-indigo-400">
                 <Link href={`/blog/${post.slug}`}>{post.title}</Link>
               </h2>
-              <p className="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400 line-clamp-2">
+              <p className="mt-4 text-sm leading-6 text-gray-600 dark:text-white line-clamp-2">
                 {post.excerpt}
               </p>
               <div className="mt-4 flex items-center gap-x-2">

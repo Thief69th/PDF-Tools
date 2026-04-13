@@ -45,7 +45,7 @@ Our own collection of utilities like JSON formatters and image compressors can s
     <article className="container-custom py-12 md:py-20">
       <Link
         href="/blog"
-        className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-indigo-600 mb-8 dark:text-gray-400 dark:hover:text-indigo-400"
+        className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 dark:text-white hover:text-indigo-600 mb-8 dark:text-white dark:hover:text-indigo-400"
       >
         <ArrowLeft size={16} />
         Back to Blog
@@ -56,11 +56,11 @@ Our own collection of utilities like JSON formatters and image compressors can s
           <Tag size={14} />
           {post.category}
         </div>
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-6 dark:text-white">
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl mb-6 ">
           {post.title}
         </h1>
         
-        <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 mb-10 border-b border-gray-100 dark:border-gray-800 pb-6 dark:text-gray-400">
+        <div className="flex flex-wrap items-center gap-6 text-sm text-gray-500 dark:text-white mb-10 border-b border-gray-100 dark:border-gray-800 pb-6 dark:text-white">
           <div className="flex items-center gap-2">
             <User size={16} />
             {post.author}

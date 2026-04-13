@@ -9,7 +9,7 @@ interface AdBannerProps {
 export default function AdBanner({ slot, format = 'auto', className = '' }: AdBannerProps) {
   return (
     <div
-      className={`relative flex min-h-[100px] w-full items-center justify-center overflow-hidden rounded-xl border-2 border-dashed border-gray-200 bg-gray-50 text-gray-400 ${className}`}
+      className={`relative flex min-h-[100px] w-full items-center justify-center overflow-hidden rounded-xl border-2 border-dashed border-gray-200 bg-gray-50 dark:bg-gray-900 text-gray-400 ${className}`}
     >
       <div className="text-center">
         <span className="block text-xs font-bold uppercase tracking-widest opacity-50">Advertisement</span>

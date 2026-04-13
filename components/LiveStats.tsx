@@ -39,7 +39,7 @@ export default function LiveStats() {
     return (
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         {[1, 2, 3].map((i) => (
-      <div key={i} className="h-20 animate-pulse rounded-2xl border border-black/5 bg-black/5 dark:border-white/10 dark:bg-white/5" />
+      <div key={i} className="h-20 animate-pulse rounded-2xl border border-black/5 bg-black/5 dark:border-white/10 dark:bg-gray-800/5" />
         ))}
       </div>
     );
@@ -77,14 +77,14 @@ function StatItem({ icon: Icon, label, value, color, bgColor }: any) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="flex items-center gap-4 rounded-2xl border border-black/5 bg-black/5 dark:border-white/10 dark:bg-white/5 p-4 shadow-sm backdrop-blur-sm"
+      className="flex items-center gap-4 rounded-2xl border border-black/5 bg-black/5 dark:border-white/10 dark:bg-gray-800/5 p-4 shadow-sm backdrop-blur-sm"
     >
       <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${bgColor} ${color}`}>
         <Icon size={24} />
       </div>
       <div>
-        <p className="text-xs font-bold text-black uppercase tracking-wider">{label}</p>
-        <p className="text-xl font-bold text-black">{value}</p>
+        <p className="text-xs font-bold text-black dark:text-white uppercase tracking-wider">{label}</p>
+        <p className="text-xl font-bold text-black dark:text-white">{value}</p>
       </div>
     </motion.div>
   );

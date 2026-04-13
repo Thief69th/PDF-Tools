@@ -88,8 +88,8 @@ export default function ToolsPage() {
   return (
     <div className="container-custom py-12 md:py-20">
       <div className="mx-auto max-w-2xl text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-black sm:text-5xl">All Online Tools</h1>
-        <p className="mt-4 text-lg text-black">
+        <h1 className="text-3xl font-bold tracking-tight text-black dark:text-white sm:text-5xl">All Online Tools</h1>
+        <p className="mt-4 text-lg text-black dark:text-white">
           Browse our complete collection of free online tools designed to make your work easier.
         </p>
       </div>
@@ -102,7 +102,7 @@ export default function ToolsPage() {
         {categories.map((category) => (
           <div key={category.name}>
             <div className="flex items-center gap-4 mb-8">
-              <h2 className="text-2xl font-bold text-black">{category.name}</h2>
+              <h2 className="text-2xl font-bold text-black dark:text-white">{category.name}</h2>
               <div className="h-px flex-1 bg-gray-200" />
             </div>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
