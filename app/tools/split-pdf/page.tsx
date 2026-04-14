@@ -108,12 +108,12 @@ export default function SplitPdfPage() {
           <ArrowRight size={14} />
           <Link href="/tools" className="hover:underline">Tools</Link>
           <ArrowRight size={14} />
-          <span className="text-black dark:text-white">Split PDF</span>
+          <span className="">Split PDF</span>
         </nav>
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">Split PDF</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-white">
+          <p className="mt-4 text-lg text-gray-600 ">
             Extract specific pages from your PDF or save each page as a separate document.
           </p>
         </div>
@@ -121,7 +121,7 @@ export default function SplitPdfPage() {
         {!file ? (
           <div 
             onClick={() => fileInputRef.current?.click()}
-            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-12 text-center transition-all hover:border-black dark:hover:border-white cursor-pointer"
+            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-[var(--border)]  bg-[var(--card)] /50 p-12 text-center transition-all hover:border-black dark:hover:border-white cursor-pointer"
           >
             <input 
               type="file" 
@@ -130,35 +130,35 @@ export default function SplitPdfPage() {
               accept="application/pdf" 
               className="hidden" 
             />
-            <div className="mb-4 rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-sm group-hover:scale-110 transition-transform">
-              <Scissors className="h-8 w-8 text-indigo-600" />
+            <div className="mb-4 rounded-2xl bg-[var(--card)]  p-4 shadow-sm group-hover:scale-110 transition-transform">
+              <Scissors className="h-8 w-8 text-[var(--accent)]" />
             </div>
             <h3 className="text-xl font-bold">Select PDF File</h3>
-            <p className="mt-2 text-sm text-gray-500 dark:text-white">
+            <p className="mt-2 text-sm text-gray-500 ">
               Drag and drop your PDF here, or click to browse
             </p>
           </div>
         ) : (
           <div className="space-y-8">
-            <div className="flex items-center justify-between rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-sm">
+            <div className="flex items-center justify-between rounded-2xl border border-[var(--border)]  bg-[var(--card)]  p-6 shadow-sm">
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--card)]  text-[var(--accent)]">
                   <FileText size={24} />
                 </div>
                 <div>
                   <h4 className="font-bold">{file.name}</h4>
-                  <p className="text-sm text-gray-500 dark:text-white">{pageCount} Pages</p>
+                  <p className="text-sm text-gray-500 ">{pageCount} Pages</p>
                 </div>
               </div>
               <button 
                 onClick={() => setFile(null)}
-                className="rounded-full p-2 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800"
+                className="rounded-full p-2 hover:bg-[var(--card)]  "
               >
                 <X size={20} />
               </button>
             </div>
 
-            <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-sm">
+            <div className="rounded-2xl border border-[var(--border)]  bg-[var(--card)]  p-8 shadow-sm">
               <h3 className="mb-6 text-lg font-bold">Split Settings</h3>
               <div className="space-y-4">
                 <div>
@@ -170,10 +170,10 @@ export default function SplitPdfPage() {
                     value={splitRange}
                     onChange={(e) => setSplitRange(e.target.value)}
                     placeholder="Enter page range"
-                    className="w-full rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
+                    className="w-full rounded-xl border border-[var(--border)]  bg-[var(--card)]  px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)] "
                   />
                 </div>
-                <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-white">
+                <div className="flex items-center gap-2 text-xs text-gray-500 ">
                   <CheckCircle2 size={14} className="text-green-500" />
                   <span>Total pages available: {pageCount}</span>
                 </div>
@@ -183,7 +183,7 @@ export default function SplitPdfPage() {
                 <button
                   onClick={splitPdf}
                   disabled={isGenerating || !splitRange}
-                  className="flex w-full max-w-xs items-center justify-center gap-2 rounded-2xl bg-black px-8 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-gray-800 disabled:opacity-50 dark:bg-white dark:text-black dark:hover:bg-gray-200 sm:w-auto"
+                  className="flex w-full max-w-xs items-center justify-center gap-2 rounded-2xl px-8 py-4 text-sm font-bold shadow-lg transition-all hover:opacity-80 disabled:opacity-40" style={{ background: "var(--accent)", color: "var(--accent-fg)" }} className=" dark:bg-[var(--card)] dark:dark:hover:bg-gray-200 sm:w-auto"
                 >
                   {isGenerating ? (
                     <>
@@ -204,20 +204,20 @@ export default function SplitPdfPage() {
 
         {/* Info Section */}
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">✂️</div>
             <h3 className="mb-2 font-bold">Precise Extraction</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Extract exactly the pages you need with flexible range selection.</p>
+            <p className="text-sm text-gray-500 ">Extract exactly the pages you need with flexible range selection.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">🔒</div>
             <h3 className="mb-2 font-bold">Safe & Private</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Your documents are processed locally. We never see your content.</p>
+            <p className="text-sm text-gray-500 ">Your documents are processed locally. We never see your content.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Fast Processing</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Split large PDFs instantly without any server-side delays.</p>
+            <p className="text-sm text-gray-500 ">Split large PDFs instantly without any server-side delays.</p>
           </div>
         </div>
       </div>

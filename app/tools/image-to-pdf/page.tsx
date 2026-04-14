@@ -144,12 +144,12 @@ export default function ImageToPdfPage() {
           <ArrowRight size={14} />
           <Link href="/tools" className="hover:underline">Tools</Link>
           <ArrowRight size={14} />
-          <span className="text-black dark:text-white">Image to PDF</span>
+          <span className="">Image to PDF</span>
         </nav>
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">Image to PDF</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-white">
+          <p className="mt-4 text-lg text-gray-600 ">
             Convert JPG, PNG, WEBP and other images into a single PDF document. Merge multiple images or save each on a separate page.
           </p>
         </div>
@@ -157,7 +157,7 @@ export default function ImageToPdfPage() {
         {images.length === 0 ? (
           <div 
             onClick={() => fileInputRef.current?.click()}
-            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-12 text-center transition-all hover:border-black dark:hover:border-white cursor-pointer"
+            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-[var(--border)]  bg-[var(--card)] /50 p-12 text-center transition-all hover:border-black dark:hover:border-white cursor-pointer"
           >
             <input 
               type="file" 
@@ -167,17 +167,17 @@ export default function ImageToPdfPage() {
               accept="image/*" 
               className="hidden" 
             />
-            <div className="mb-4 rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-sm group-hover:scale-110 transition-transform">
-              <Upload className="h-8 w-8 text-indigo-600" />
+            <div className="mb-4 rounded-2xl bg-[var(--card)]  p-4 shadow-sm group-hover:scale-110 transition-transform">
+              <Upload className="h-8 w-8 text-[var(--accent)]" />
             </div>
             <h3 className="text-xl font-bold">Select Images</h3>
-            <p className="mt-2 text-sm text-gray-500 dark:text-white">
+            <p className="mt-2 text-sm text-gray-500 ">
               Drag and drop your images here, or click to browse
             </p>
             <div className="mt-6 flex gap-2">
-              <span className="rounded-full bg-gray-200 dark:bg-gray-800 px-3 py-1 text-[10px] font-bold uppercase tracking-wider">JPG</span>
-              <span className="rounded-full bg-gray-200 dark:bg-gray-800 px-3 py-1 text-[10px] font-bold uppercase tracking-wider">PNG</span>
-              <span className="rounded-full bg-gray-200 dark:bg-gray-800 px-3 py-1 text-[10px] font-bold uppercase tracking-wider">WEBP</span>
+              <span className="rounded-full bg-gray-200  px-3 py-1 text-[10px] font-bold uppercase tracking-wider">JPG</span>
+              <span className="rounded-full bg-gray-200  px-3 py-1 text-[10px] font-bold uppercase tracking-wider">PNG</span>
+              <span className="rounded-full bg-gray-200  px-3 py-1 text-[10px] font-bold uppercase tracking-wider">WEBP</span>
             </div>
           </div>
         ) : (
@@ -186,12 +186,12 @@ export default function ImageToPdfPage() {
             <div className="lg:col-span-7 space-y-6">
               <div className="flex items-center justify-between">
                 <h2 className="text-xl font-bold flex items-center gap-2">
-                  <Settings size={20} className="text-indigo-600" />
+                  <Settings size={20} className="text-[var(--accent)]" />
                   Manage Images
                 </h2>
                 <button 
                   onClick={() => setShowPreview(!showPreview)}
-                  className="lg:hidden flex items-center gap-2 text-sm font-semibold text-indigo-600"
+                  className="lg:hidden flex items-center gap-2 text-sm font-semibold text-[var(--accent)]"
                 >
                   <Eye size={16} />
                   {showPreview ? 'Hide Preview' : 'Show Preview'}
@@ -207,7 +207,7 @@ export default function ImageToPdfPage() {
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.9 }}
-                      className="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm"
+                      className="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-[var(--border)]  "
                     >
                       <Image 
                         src={img.preview} 
@@ -222,14 +222,14 @@ export default function ImageToPdfPage() {
                           <button 
                             onClick={() => moveImage(index, 'up')}
                             disabled={index === 0}
-                            className="rounded-full bg-white dark:bg-gray-800 p-2 text-black dark:text-white hover:bg-gray-100 dark:bg-gray-800 disabled:opacity-50"
+                            className="rounded-full bg-[var(--card)]  p-2  hover:bg-[var(--card)]  disabled:opacity-50"
                           >
                             <MoveUp size={16} />
                           </button>
                           <button 
                             onClick={() => moveImage(index, 'down')}
                             disabled={index === images.length - 1}
-                            className="rounded-full bg-white dark:bg-gray-800 p-2 text-black dark:text-white hover:bg-gray-100 dark:bg-gray-800 disabled:opacity-50"
+                            className="rounded-full bg-[var(--card)]  p-2  hover:bg-[var(--card)]  disabled:opacity-50"
                           >
                             <MoveDown size={16} />
                           </button>
@@ -250,7 +250,7 @@ export default function ImageToPdfPage() {
                 
                 <button 
                   onClick={() => fileInputRef.current?.click()}
-                  className="flex aspect-[3/4] flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-200 dark:border-gray-800 hover:border-black dark:hover:border-white transition-all"
+                  className="flex aspect-[3/4] flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[var(--border)]  hover:border-black dark:hover:border-white transition-all"
                 >
                   <Plus className="mb-2 h-6 w-6 text-gray-400" />
                   <span className="text-xs font-bold text-gray-400">Add More</span>
@@ -265,7 +265,7 @@ export default function ImageToPdfPage() {
                 </button>
               </div>
 
-              <div className="p-6 rounded-2xl border border-gray-100 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 space-y-4">
+              <div className="p-6 rounded-2xl border border-[var(--border)]  bg-[var(--card)] /50 space-y-4">
                 <h3 className="font-bold">PDF Settings</h3>
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
@@ -287,7 +287,7 @@ export default function ImageToPdfPage() {
                 <button
                   onClick={generatePdf}
                   disabled={isGenerating}
-                  className="flex w-full items-center justify-center gap-2 rounded-2xl bg-black px-8 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-gray-800 disabled:opacity-50 dark:bg-white dark:text-black dark:hover:bg-gray-200"
+                  className="flex w-full items-center justify-center gap-2 rounded-2xl px-8 py-4 text-sm font-bold shadow-lg transition-all hover:opacity-80 disabled:opacity-40" style={{ background: "var(--accent)", color: "var(--accent-fg)" }} className=" dark:bg-[var(--card)] dark:dark:hover:bg-gray-200"
                 >
                   {isGenerating ? (
                     <>
@@ -301,7 +301,7 @@ export default function ImageToPdfPage() {
                     </>
                   )}
                 </button>
-                <p className="text-xs text-gray-500 dark:text-white">
+                <p className="text-xs text-gray-500 ">
                   {images.length} image{images.length !== 1 ? 's' : ''} selected. All processing is 100% local.
                 </p>
               </div>
@@ -312,22 +312,22 @@ export default function ImageToPdfPage() {
               <div className="sticky top-24 space-y-4">
                 <div className="flex items-center justify-between">
                   <h2 className="text-xl font-bold flex items-center gap-2">
-                    <Eye size={20} className="text-indigo-600" />
+                    <Eye size={20} className="text-[var(--accent)]" />
                     Live Preview
                   </h2>
-                  <span className="text-xs font-medium px-2 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 rounded-md">
+                  <span className="text-xs font-medium px-2 py-1 bg-[var(--card)]  text-[var(--accent)] rounded-md">
                     A4 Format
                   </span>
                 </div>
                 
-                <div className="h-[600px] overflow-y-auto rounded-3xl border border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-950 p-6 space-y-8 scrollbar-hide">
+                <div className="h-[600px] overflow-y-auto rounded-3xl border border-[var(--border)]  bg-[var(--card)] dark:bg-gray-950 p-6 space-y-8 scrollbar-hide">
                   <AnimatePresence>
                     {images.map((img, index) => (
                       <motion.div 
                         key={`preview-${img.id}`}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="relative aspect-[1/1.414] w-full bg-white dark:bg-gray-800 shadow-xl mx-auto flex items-center justify-center overflow-hidden"
+                        className="relative aspect-[1/1.414] w-full bg-[var(--card)]  shadow-xl mx-auto flex items-center justify-center overflow-hidden"
                         style={{ padding: `${margin * 2}px` }}
                       >
                         <div className="relative w-full h-full flex items-center justify-center">
@@ -364,20 +364,20 @@ export default function ImageToPdfPage() {
 
         {/* Info Section */}
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">🔒</div>
             <h3 className="mb-2 font-bold">Privacy First</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Your images never leave your browser. Processing happens entirely on your device.</p>
+            <p className="text-sm text-gray-500 ">Your images never leave your browser. Processing happens entirely on your device.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Fast & Free</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Convert as many images as you want without any limits or hidden costs.</p>
+            <p className="text-sm text-gray-500 ">Convert as many images as you want without any limits or hidden costs.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">📱</div>
             <h3 className="mb-2 font-bold">Any Device</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Works perfectly on mobile, tablet, and desktop browsers.</p>
+            <p className="text-sm text-gray-500 ">Works perfectly on mobile, tablet, and desktop browsers.</p>
           </div>
         </div>
       </div>

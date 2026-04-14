@@ -140,12 +140,12 @@ export default function AddPdfPagePage() {
           <ArrowRight size={14} />
           <Link href="/tools" className="hover:underline">Tools</Link>
           <ArrowRight size={14} />
-          <span className="text-black dark:text-white">Add PDF Page</span>
+          <span className="">Add PDF Page</span>
         </nav>
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">Add PDF Page</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-white">
+          <p className="mt-4 text-lg text-gray-600 ">
             Insert pages from one PDF into another at any specific position.
           </p>
         </div>
@@ -154,25 +154,25 @@ export default function AddPdfPagePage() {
           {/* Main PDF */}
           <div className="space-y-4">
             <h3 className="font-bold flex items-center gap-2">
-              <FileText size={18} className="text-indigo-600" />
+              <FileText size={18} className="text-[var(--accent)]" />
               Target PDF
             </h3>
             {!mainFile ? (
               <div 
                 onClick={() => mainInputRef.current?.click()}
-                className="h-48 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-6 text-center cursor-pointer hover:border-black dark:hover:border-white transition-all"
+                className="h-48 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[var(--border)]  bg-[var(--card)] /50 p-6 text-center cursor-pointer hover:border-black dark:hover:border-white transition-all"
               >
                 <input type="file" ref={mainInputRef} onChange={onMainFileChange} accept="application/pdf" className="hidden" />
                 <PlusCircle className="mb-2 h-6 w-6 text-gray-400" />
                 <span className="text-sm font-medium">Select Target PDF</span>
               </div>
             ) : (
-              <div className="p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 flex items-center justify-between">
+              <div className="p-4 rounded-xl border border-[var(--border)]  bg-[var(--card)]  flex items-center justify-between">
                 <div className="truncate pr-4">
                   <div className="font-bold truncate text-sm">{mainFile.name}</div>
-                  <div className="text-xs text-gray-500 dark:text-white">{mainPageCount} Pages</div>
+                  <div className="text-xs text-gray-500 ">{mainPageCount} Pages</div>
                 </div>
-                <button onClick={() => setMainFile(null)} className="p-1 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800 rounded-full">
+                <button onClick={() => setMainFile(null)} className="p-1 hover:bg-[var(--card)]   rounded-full">
                   <X size={16} />
                 </button>
               </div>
@@ -182,25 +182,25 @@ export default function AddPdfPagePage() {
           {/* Source PDF */}
           <div className="space-y-4">
             <h3 className="font-bold flex items-center gap-2">
-              <Files size={18} className="text-indigo-600" />
+              <Files size={18} className="text-[var(--accent)]" />
               Source PDF (Pages to add)
             </h3>
             {!sourceFile ? (
               <div 
                 onClick={() => sourceInputRef.current?.click()}
-                className="h-48 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-6 text-center cursor-pointer hover:border-black dark:hover:border-white transition-all"
+                className="h-48 flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[var(--border)]  bg-[var(--card)] /50 p-6 text-center cursor-pointer hover:border-black dark:hover:border-white transition-all"
               >
                 <input type="file" ref={sourceInputRef} onChange={onSourceFileChange} accept="application/pdf" className="hidden" />
                 <PlusCircle className="mb-2 h-6 w-6 text-gray-400" />
                 <span className="text-sm font-medium">Select Source PDF</span>
               </div>
             ) : (
-              <div className="p-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 flex items-center justify-between">
+              <div className="p-4 rounded-xl border border-[var(--border)]  bg-[var(--card)]  flex items-center justify-between">
                 <div className="truncate pr-4">
                   <div className="font-bold truncate text-sm">{sourceFile.name}</div>
-                  <div className="text-xs text-gray-500 dark:text-white">{sourcePageCount} Pages</div>
+                  <div className="text-xs text-gray-500 ">{sourcePageCount} Pages</div>
                 </div>
-                <button onClick={() => setSourceFile(null)} className="p-1 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800 rounded-full">
+                <button onClick={() => setSourceFile(null)} className="p-1 hover:bg-[var(--card)]   rounded-full">
                   <X size={16} />
                 </button>
               </div>
@@ -212,7 +212,7 @@ export default function AddPdfPagePage() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-12 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-sm space-y-8"
+            className="mt-12 rounded-2xl border border-[var(--border)]  bg-[var(--card)]  p-8 shadow-sm space-y-8"
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-4">
@@ -222,7 +222,7 @@ export default function AddPdfPagePage() {
                     <button 
                       key={pos}
                       onClick={() => setInsertPosition(pos)}
-                      className={`px-4 py-2 rounded-lg border text-sm font-medium text-left transition-all ${insertPosition === pos ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-indigo-600'}`}
+                      className={`px-4 py-2 rounded-lg border text-sm font-medium text-left transition-all ${insertPosition === pos ? 'bg-[var(--accent)] text-white border-indigo-600' : 'bg-[var(--card)]  border-[var(--border)]  hover:border-indigo-600'}`}
                     >
                       {pos === 'start' ? 'At the Start' : pos === 'end' ? 'At the End' : 'Custom Position'}
                     </button>
@@ -237,7 +237,7 @@ export default function AddPdfPagePage() {
                       max={mainPageCount + 1} 
                       value={customPosition} 
                       onChange={(e) => setCustomPosition(parseInt(e.target.value))}
-                      className="w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-sm"
+                      className="w-full rounded-lg border border-[var(--border)]  bg-[var(--card)]  px-3 py-2 text-sm"
                     />
                   </div>
                 )}
@@ -248,13 +248,13 @@ export default function AddPdfPagePage() {
                 <div className="flex flex-col gap-2">
                   <button 
                     onClick={() => setPagesToInsert('all')}
-                    className={`px-4 py-2 rounded-lg border text-sm font-medium text-left transition-all ${pagesToInsert === 'all' ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-indigo-600'}`}
+                    className={`px-4 py-2 rounded-lg border text-sm font-medium text-left transition-all ${pagesToInsert === 'all' ? 'bg-[var(--accent)] text-white border-indigo-600' : 'bg-[var(--card)]  border-[var(--border)]  hover:border-indigo-600'}`}
                   >
                     All Pages
                   </button>
                   <button 
                     onClick={() => setPagesToInsert('')}
-                    className={`px-4 py-2 rounded-lg border text-sm font-medium text-left transition-all ${pagesToInsert !== 'all' ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-indigo-600'}`}
+                    className={`px-4 py-2 rounded-lg border text-sm font-medium text-left transition-all ${pagesToInsert !== 'all' ? 'bg-[var(--accent)] text-white border-indigo-600' : 'bg-[var(--card)]  border-[var(--border)]  hover:border-indigo-600'}`}
                   >
                     Select Pages
                   </button>
@@ -267,7 +267,7 @@ export default function AddPdfPagePage() {
                       value={pagesToInsert} 
                       onChange={(e) => setPagesToInsert(e.target.value)}
                       placeholder="e.g. 1, 3-4"
-                      className="w-full rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-sm"
+                      className="w-full rounded-lg border border-[var(--border)]  bg-[var(--card)]  px-3 py-2 text-sm"
                     />
                   </div>
                 )}
@@ -278,7 +278,7 @@ export default function AddPdfPagePage() {
               <button
                 onClick={addPages}
                 disabled={isGenerating}
-                className="flex w-full max-w-xs items-center justify-center gap-2 rounded-2xl bg-black px-8 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-gray-800 disabled:opacity-50 dark:bg-white dark:text-black dark:hover:bg-gray-200 sm:w-auto"
+                className="flex w-full max-w-xs items-center justify-center gap-2 rounded-2xl px-8 py-4 text-sm font-bold shadow-lg transition-all hover:opacity-80 disabled:opacity-40" style={{ background: "var(--accent)", color: "var(--accent-fg)" }} className=" dark:bg-[var(--card)] dark:dark:hover:bg-gray-200 sm:w-auto"
               >
                 {isGenerating ? (
                   <>
@@ -298,20 +298,20 @@ export default function AddPdfPagePage() {
 
         {/* Info Section */}
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">📑</div>
             <h3 className="mb-2 font-bold">Precise Control</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Choose exactly which pages to add and where they should go in your document.</p>
+            <p className="text-sm text-gray-500 ">Choose exactly which pages to add and where they should go in your document.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">🔒</div>
             <h3 className="mb-2 font-bold">100% Private</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Your files are processed locally in your browser. We never upload them.</p>
+            <p className="text-sm text-gray-500 ">Your files are processed locally in your browser. We never upload them.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Fast & Free</h3>
-            <p className="text-sm text-gray-500 dark:text-white">No limits on file size or page count. Works instantly on any device.</p>
+            <p className="text-sm text-gray-500 ">No limits on file size or page count. Works instantly on any device.</p>
           </div>
         </div>
       </div>

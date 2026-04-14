@@ -4,8 +4,8 @@ export default function TermsPage() {
   return (
     <div className="container-custom py-12 md:py-20">
       <div className="mx-auto max-w-3xl">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl mb-8">Terms of Service</h1>
-        <div className="prose prose-indigo prose-lg max-w-none text-gray-600 dark:text-white">
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900  sm:text-5xl mb-8">Terms of Service</h1>
+        <div className="prose prose-indigo prose-lg max-w-none opacity-70">
           <p className="lead">Last updated: March 16, 2024</p>
           
           <h2>1. Acceptance of Terms</h2>

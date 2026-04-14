@@ -97,12 +97,12 @@ export default function ExcelToPdfPage() {
           <ArrowRight size={14} />
           <Link href="/tools" className="hover:underline">Tools</Link>
           <ArrowRight size={14} />
-          <span className="text-black dark:text-white">Excel to PDF</span>
+          <span className="">Excel to PDF</span>
         </nav>
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">Excel to PDF</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-white">
+          <p className="mt-4 text-lg text-gray-600 ">
             Convert Excel spreadsheets and CSV files into clean, professional PDF tables.
           </p>
         </div>
@@ -110,7 +110,7 @@ export default function ExcelToPdfPage() {
         {!file ? (
           <div 
             onClick={() => fileInputRef.current?.click()}
-            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-12 text-center transition-all hover:border-black dark:hover:border-white cursor-pointer"
+            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-[var(--border)]  bg-[var(--card)] /50 p-12 text-center transition-all hover:border-black dark:hover:border-white cursor-pointer"
           >
             <input 
               type="file" 
@@ -119,37 +119,37 @@ export default function ExcelToPdfPage() {
               accept=".xlsx, .xls, .csv" 
               className="hidden" 
             />
-            <div className="mb-4 rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-sm group-hover:scale-110 transition-transform">
+            <div className="mb-4 rounded-2xl bg-[var(--card)]  p-4 shadow-sm group-hover:scale-110 transition-transform">
               <FileSpreadsheet className="h-8 w-8 text-green-600" />
             </div>
             <h3 className="text-xl font-bold">Select Excel File</h3>
-            <p className="mt-2 text-sm text-gray-500 dark:text-white">
+            <p className="mt-2 text-sm text-gray-500 ">
               Drag and drop your .xlsx, .xls, or .csv file here
             </p>
           </div>
         ) : (
           <div className="space-y-8">
-            <div className="flex items-center justify-between rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-sm">
+            <div className="flex items-center justify-between rounded-2xl border border-[var(--border)]  bg-[var(--card)]  p-6 shadow-sm">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-50 dark:bg-green-900/30 text-green-600">
                   <FileSpreadsheet size={24} />
                 </div>
                 <div>
                   <h4 className="font-bold">{file.name}</h4>
-                  <p className="text-sm text-gray-500 dark:text-white">{(file.size / 1024).toFixed(1)} KB</p>
+                  <p className="text-sm text-gray-500 ">{(file.size / 1024).toFixed(1)} KB</p>
                 </div>
               </div>
               <button 
                 onClick={() => {setFile(null); setWorkbook(null);}}
-                className="rounded-full p-2 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800"
+                className="rounded-full p-2 hover:bg-[var(--card)]  "
               >
                 <X size={20} />
               </button>
             </div>
 
-            <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-sm">
+            <div className="rounded-2xl border border-[var(--border)]  bg-[var(--card)]  p-8 shadow-sm">
               <h3 className="mb-6 text-lg font-bold flex items-center gap-2">
-                <TableIcon size={20} className="text-indigo-600" />
+                <TableIcon size={20} className="text-[var(--accent)]" />
                 Select Sheet
               </h3>
               
@@ -158,7 +158,7 @@ export default function ExcelToPdfPage() {
                   <button 
                     key={name}
                     onClick={() => setSelectedSheet(name)}
-                    className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all truncate ${selectedSheet === name ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:border-indigo-600'}`}
+                    className={`px-4 py-2 rounded-lg border text-sm font-medium transition-all truncate ${selectedSheet === name ? 'bg-[var(--accent)] text-white border-indigo-600' : 'bg-[var(--card)]  border-[var(--border)]  hover:border-indigo-600'}`}
                     title={name}
                   >
                     {name}
@@ -170,7 +170,7 @@ export default function ExcelToPdfPage() {
                 <button
                   onClick={convertToPdf}
                   disabled={isGenerating || !selectedSheet}
-                  className="flex w-full max-w-xs items-center justify-center gap-2 rounded-2xl bg-black px-8 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-gray-800 disabled:opacity-50 dark:bg-white dark:text-black dark:hover:bg-gray-200 sm:w-auto"
+                  className="flex w-full max-w-xs items-center justify-center gap-2 rounded-2xl px-8 py-4 text-sm font-bold shadow-lg transition-all hover:opacity-80 disabled:opacity-40" style={{ background: "var(--accent)", color: "var(--accent-fg)" }} className=" dark:bg-[var(--card)] dark:dark:hover:bg-gray-200 sm:w-auto"
                 >
                   {isGenerating ? (
                     <>
@@ -191,20 +191,20 @@ export default function ExcelToPdfPage() {
 
         {/* Info Section */}
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">📊</div>
             <h3 className="mb-2 font-bold">Table Formatting</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Automatically converts your spreadsheet data into clean, readable PDF tables.</p>
+            <p className="text-sm text-gray-500 ">Automatically converts your spreadsheet data into clean, readable PDF tables.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">🔒</div>
             <h3 className="mb-2 font-bold">Private & Secure</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Your data stays in your browser. We never upload your spreadsheets to any server.</p>
+            <p className="text-sm text-gray-500 ">Your data stays in your browser. We never upload your spreadsheets to any server.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Fast Conversion</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Get your PDF document in seconds, perfectly formatted for printing or sharing.</p>
+            <p className="text-sm text-gray-500 ">Get your PDF document in seconds, perfectly formatted for printing or sharing.</p>
           </div>
         </div>
       </div>

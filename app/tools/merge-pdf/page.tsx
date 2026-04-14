@@ -109,12 +109,12 @@ export default function MergePdfPage() {
           <ArrowRight size={14} />
           <Link href="/tools" className="hover:underline">Tools</Link>
           <ArrowRight size={14} />
-          <span className="text-black dark:text-white">Merge PDF</span>
+          <span className="">Merge PDF</span>
         </nav>
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">Merge PDF</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-white">
+          <p className="mt-4 text-lg text-gray-600 ">
             Combine multiple PDF files into one single document in seconds.
           </p>
         </div>
@@ -122,7 +122,7 @@ export default function MergePdfPage() {
         {pdfs.length === 0 ? (
           <div 
             onClick={() => fileInputRef.current?.click()}
-            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-12 text-center transition-all hover:border-black dark:hover:border-white cursor-pointer"
+            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-[var(--border)]  bg-[var(--card)] /50 p-12 text-center transition-all hover:border-black dark:hover:border-white cursor-pointer"
           >
             <input 
               type="file" 
@@ -132,11 +132,11 @@ export default function MergePdfPage() {
               accept="application/pdf" 
               className="hidden" 
             />
-            <div className="mb-4 rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-sm group-hover:scale-110 transition-transform">
-              <Files className="h-8 w-8 text-indigo-600" />
+            <div className="mb-4 rounded-2xl bg-[var(--card)]  p-4 shadow-sm group-hover:scale-110 transition-transform">
+              <Files className="h-8 w-8 text-[var(--accent)]" />
             </div>
             <h3 className="text-xl font-bold">Select PDF Files</h3>
-            <p className="mt-2 text-sm text-gray-500 dark:text-white">
+            <p className="mt-2 text-sm text-gray-500 ">
               Drag and drop your PDFs here, or click to browse
             </p>
           </div>
@@ -151,15 +151,15 @@ export default function MergePdfPage() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
-                    className="flex items-center justify-between rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 shadow-sm"
+                    className="flex items-center justify-between rounded-2xl border border-[var(--border)]  bg-[var(--card)]  p-4 shadow-sm"
                   >
                     <div className="flex items-center gap-4 overflow-hidden">
-                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--card)]  text-[var(--accent)]">
                         <FileText size={20} />
                       </div>
                       <div className="overflow-hidden">
                         <h4 className="truncate text-sm font-bold">{pdf.name}</h4>
-                        <p className="text-xs text-gray-500 dark:text-white">{pdf.size}</p>
+                        <p className="text-xs text-gray-500 ">{pdf.size}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -167,7 +167,7 @@ export default function MergePdfPage() {
                         <button 
                           onClick={() => movePdf(index, 'up')}
                           disabled={index === 0}
-                          className="rounded-lg p-1.5 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800 disabled:opacity-30"
+                          className="rounded-lg p-1.5 hover:bg-[var(--card)]   disabled:opacity-30"
                           title="Move Up"
                         >
                           <MoveUp size={16} />
@@ -175,7 +175,7 @@ export default function MergePdfPage() {
                         <button 
                           onClick={() => movePdf(index, 'down')}
                           disabled={index === pdfs.length - 1}
-                          className="rounded-lg p-1.5 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800 disabled:opacity-30"
+                          className="rounded-lg p-1.5 hover:bg-[var(--card)]   disabled:opacity-30"
                           title="Move Down"
                         >
                           <MoveDown size={16} />
@@ -194,10 +194,10 @@ export default function MergePdfPage() {
               </AnimatePresence>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-100 dark:border-gray-800 pt-8">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[var(--border)]  pt-8">
               <button 
                 onClick={() => fileInputRef.current?.click()}
-                className="flex items-center gap-2 text-sm font-bold text-indigo-600 hover:underline"
+                className="flex items-center gap-2 text-sm font-bold text-[var(--accent)] hover:underline"
               >
                 <Plus size={18} />
                 Add More Files
@@ -214,7 +214,7 @@ export default function MergePdfPage() {
               <button
                 onClick={mergePdfs}
                 disabled={isGenerating || pdfs.length < 2}
-                className="flex w-full max-w-xs items-center justify-center gap-2 rounded-2xl bg-black px-8 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-gray-800 disabled:opacity-50 dark:bg-white dark:text-black dark:hover:bg-gray-200 sm:w-auto"
+                className="flex w-full max-w-xs items-center justify-center gap-2 rounded-2xl px-8 py-4 text-sm font-bold shadow-lg transition-all hover:opacity-80 disabled:opacity-40" style={{ background: "var(--accent)", color: "var(--accent-fg)" }} className=" dark:bg-[var(--card)] dark:dark:hover:bg-gray-200 sm:w-auto"
               >
                 {isGenerating ? (
                   <>
@@ -229,7 +229,7 @@ export default function MergePdfPage() {
                 )}
               </button>
             </div>
-            <p className="text-center text-xs text-gray-500 dark:text-white">
+            <p className="text-center text-xs text-gray-500 ">
               {pdfs.length} file{pdfs.length !== 1 ? 's' : ''} selected. All processing is 100% local.
             </p>
           </div>
@@ -237,20 +237,20 @@ export default function MergePdfPage() {
 
         {/* Info Section */}
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">🔒</div>
             <h3 className="mb-2 font-bold">Secure Merging</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Your files are merged locally in your browser. No data is sent to any server.</p>
+            <p className="text-sm text-gray-500 ">Your files are merged locally in your browser. No data is sent to any server.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Instant Results</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Combine even large PDF files in seconds without waiting for uploads.</p>
+            <p className="text-sm text-gray-500 ">Combine even large PDF files in seconds without waiting for uploads.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">📑</div>
             <h3 className="mb-2 font-bold">Maintain Quality</h3>
-            <p className="text-sm text-gray-500 dark:text-white">The original quality of your PDF pages is preserved during the merge.</p>
+            <p className="text-sm text-gray-500 ">The original quality of your PDF pages is preserved during the merge.</p>
           </div>
         </div>
       </div>

@@ -3,14 +3,13 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import StickyAd from '@/components/StickyAd';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'PDFGEN.online - Free PDF Tools',
-  description: 'The best collection of free online PDF tools. Merge, split, compress, and convert PDF files easily.',
+  title: 'GENPDF – Free PDF Tools',
+  description: 'All essential PDF tools. Fast. Private. Works entirely in your browser — no uploads, no server.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -23,7 +22,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </main>
           <Footer />
-          <StickyAd />
         </ThemeProvider>
       </body>
     </html>

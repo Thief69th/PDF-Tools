@@ -143,20 +143,20 @@ export default function TextToPdfPage() {
           <ArrowRight size={14} />
           <Link href="/tools" className="hover:underline">Tools</Link>
           <ArrowRight size={14} />
-          <span className="text-black dark:text-white">Text to PDF</span>
+          <span className="">Text to PDF</span>
         </nav>
 
         <div className="mb-12 text-center">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl text-black dark:text-white">Text to PDF</h1>
-          <p className="mt-4 text-lg text-black dark:text-white">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl ">Text to PDF</h1>
+          <p className="mt-4 text-lg ">
             Convert text and multiple images into a clean PDF document.
           </p>
         </div>
 
         <div className="space-y-8">
-          <div className="rounded-3xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-sm space-y-6">
+          <div className="rounded-3xl border border-[var(--border)]  bg-[var(--card)]  p-6 shadow-sm space-y-6">
             <div>
-              <label className="flex items-center gap-2 text-sm font-bold text-black dark:text-white mb-2">
+              <label className="flex items-center gap-2 text-sm font-bold  mb-2">
                 <Type size={16} />
                 Document Text
               </label>
@@ -164,19 +164,19 @@ export default function TextToPdfPage() {
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Type or paste your text here..."
-                className="w-full min-h-[300px] p-4 rounded-xl border border-gray-200 dark:border-gray-800 dark:bg-gray-800 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 outline-none resize-y text-black dark:text-white"
+                className="w-full min-h-[300px] p-4 rounded-xl border border-[var(--border)]   focus:border-indigo-600 focus:ring-2 focus:ring-indigo-600/20 outline-none resize-y "
               />
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-4">
-                <label className="flex items-center gap-2 text-sm font-bold text-black dark:text-white">
+                <label className="flex items-center gap-2 text-sm font-bold ">
                   <ImageIcon size={16} />
                   Attached Images
                 </label>
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="flex items-center gap-2 text-sm font-bold text-indigo-600 hover:text-indigo-700"
+                  className="flex items-center gap-2 text-sm font-bold text-[var(--accent)] hover:text-indigo-700"
                 >
                   <Plus size={16} />
                   Add Images
@@ -200,7 +200,7 @@ export default function TextToPdfPage() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.9 }}
-                        className="relative aspect-square rounded-xl overflow-hidden border border-gray-200 group"
+                        className="relative aspect-square rounded-xl overflow-hidden border border-[var(--border)] group"
                       >
                         <img src={img.preview} alt="Attached" className="w-full h-full object-cover" />
                         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -223,7 +223,7 @@ export default function TextToPdfPage() {
             <button
               onClick={generatePdf}
               disabled={isGenerating || (!text && images.length === 0)}
-              className="flex w-full max-w-xs items-center justify-center gap-2 rounded-2xl bg-black px-8 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-gray-800 disabled:opacity-50 sm:w-auto"
+              className="flex w-full max-w-xs items-center justify-center gap-2 rounded-2xl px-8 py-4 text-sm font-bold shadow-lg transition-all hover:opacity-80 disabled:opacity-40" style={{ background: "var(--accent)", color: "var(--accent-fg)" }} className=" sm:w-auto"
             >
               {isGenerating ? (
                 <>

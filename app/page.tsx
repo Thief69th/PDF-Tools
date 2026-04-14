@@ -1,205 +1,105 @@
 'use client';
 
 import React from 'react';
-import { 
-  FileText, 
-  Merge, 
-  Scissors, 
-  FileSearch, 
-  FileUp, 
-  FileDown,
-  ArrowRight,
-  CheckCircle2,
-  Clock,
-  Globe,
-  Search,
-  Zap,
-  Shield,
-  Smartphone,
-  LayoutGrid,
-  Trash2,
-  PlusSquare,
-  Type,
-  FileSpreadsheet
+import {
+  FileText, Merge, Scissors, FileSearch, FileUp, FileDown,
+  Search, Zap, Shield, Smartphone, LayoutGrid, Trash2, PlusSquare,
+  Type, FileSpreadsheet, Lock, Unlock, PenTool, Hash, Image,
+  AlignLeft, Layers, List, QrCode, ScanText, FileEdit, BookOpen,
+  RotateCcw, Camera, FileImage
 } from 'lucide-react';
 import Link from 'next/link';
 import ToolCard from '@/components/ToolCard';
-import LiveStats from '@/components/LiveStats';
-import AdBanner from '@/components/AdBanner';
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = React.useState('');
 
   const tools = [
-    {
-      title: 'Merge PDF',
-      description: 'Combine multiple PDF files into one single document in seconds.',
-      icon: Merge,
-      href: '/tools/merge-pdf',
-      category: 'PDF Tool'
-    },
-    {
-      title: 'Split PDF',
-      description: 'Extract pages from your PDF or save each page as a separate PDF.',
-      icon: Scissors,
-      href: '/tools/split-pdf',
-      category: 'PDF Tool'
-    },
-    {
-      title: 'PDF to Text',
-      description: 'Extract all text content from your PDF documents with high accuracy.',
-      icon: FileText,
-      href: '/tools/pdf-to-text',
-      category: 'Convert'
-    },
-    {
-      title: 'Compress PDF',
-      description: 'Reduce the file size of your PDF while keeping the best quality.',
-      icon: FileDown,
-      href: '/tools/compress-pdf',
-      category: 'Optimize'
-    },
-    {
-      title: 'Image to PDF',
-      description: 'Convert JPG, PNG, and other images into clean PDF documents.',
-      icon: FileUp,
-      href: '/tools/image-to-pdf',
-      category: 'Convert'
-    },
-    {
-      title: 'Excel to PDF',
-      description: 'Convert Excel spreadsheets and CSV files into PDF tables.',
-      icon: FileSpreadsheet,
-      href: '/tools/excel-to-pdf',
-      category: 'Convert'
-    },
-    {
-      title: 'Delete PDF Pages',
-      description: 'Remove unwanted pages from your PDF document easily.',
-      icon: Trash2,
-      href: '/tools/delete-pdf-pages',
-      category: 'PDF Tool'
-    }
+    { title: 'Merge PDF', description: 'Combine multiple PDFs into one document.', icon: Merge, href: '/tools/merge-pdf', category: 'PDF Tool' },
+    { title: 'Split PDF', description: 'Extract pages or split PDF into separate files.', icon: Scissors, href: '/tools/split-pdf', category: 'PDF Tool' },
+    { title: 'PDF to Text', description: 'Extract all text content from PDF documents.', icon: FileText, href: '/tools/pdf-to-text', category: 'Convert' },
+    { title: 'Compress PDF', description: 'Reduce PDF file size while keeping quality.', icon: FileDown, href: '/tools/compress-pdf', category: 'Optimize' },
+    { title: 'Image to PDF', description: 'Convert JPG, PNG images into clean PDFs.', icon: FileUp, href: '/tools/image-to-pdf', category: 'Convert' },
+    { title: 'Excel to PDF', description: 'Convert Excel and CSV files into PDF tables.', icon: FileSpreadsheet, href: '/tools/excel-to-pdf', category: 'Convert' },
+    { title: 'Delete Pages', description: 'Remove unwanted pages from your PDF.', icon: Trash2, href: '/tools/delete-pdf-pages', category: 'PDF Tool' },
+    { title: 'Add Page Numbers', description: 'Add custom page numbers to any PDF.', icon: Hash, href: '/tools/add-page-numbers', category: 'Edit' },
+    { title: 'Add Watermark', description: 'Add text or image watermarks to PDFs.', icon: PenTool, href: '/tools/add-watermark', category: 'Edit' },
+    { title: 'Add Signature', description: 'Draw or type a signature on your PDF.', icon: FileEdit, href: '/tools/add-signature', category: 'Edit' },
+    { title: 'Add Text', description: 'Add custom text anywhere on your PDF pages.', icon: Type, href: '/tools/add-text', category: 'Edit' },
+    { title: 'Add QR Code', description: 'Embed QR codes into your PDF documents.', icon: QrCode, href: '/tools/add-qr-code', category: 'Edit' },
+    { title: 'Add Blank Page', description: 'Insert blank pages into your PDF.', icon: PlusSquare, href: '/tools/add-blank-page', category: 'PDF Tool' },
+    { title: 'Add PDF Page', description: 'Insert pages from another PDF into yours.', icon: Layers, href: '/tools/add-pdf-page', category: 'PDF Tool' },
+    { title: 'Reorder Pages', description: 'Drag and drop to rearrange PDF pages.', icon: RotateCcw, href: '/tools/reorder-pages', category: 'PDF Tool' },
+    { title: 'Protect PDF', description: 'Add password protection to your PDF.', icon: Lock, href: '/tools/protect-pdf', category: 'Security' },
+    { title: 'Unlock PDF', description: 'Remove password from protected PDFs.', icon: Unlock, href: '/tools/unlock-pdf', category: 'Security' },
+    { title: 'Edit Metadata', description: 'Edit title, author, and PDF properties.', icon: FileSearch, href: '/tools/edit-metadata', category: 'Edit' },
+    { title: 'PDF to Image', description: 'Convert PDF pages to PNG or JPG images.', icon: FileImage, href: '/tools/pdf-to-image', category: 'Convert' },
+    { title: 'Text to PDF', description: 'Convert plain text into a PDF document.', icon: AlignLeft, href: '/tools/text-to-pdf', category: 'Convert' },
+    { title: 'Screenshot to PDF', description: 'Convert screenshots into PDF documents.', icon: Camera, href: '/tools/screenshot-to-pdf', category: 'Convert' },
+    { title: 'Add Index Page', description: 'Auto-generate a table of contents.', icon: BookOpen, href: '/tools/add-index-page', category: 'Edit' },
+    { title: 'Resume Builder', description: 'Build a professional resume as PDF.', icon: List, href: '/tools/resume-builder', category: 'Create' },
+    { title: 'Remove Watermark', description: 'Remove watermarks from PDF files.', icon: ScanText, href: '/tools/remove-watermark', category: 'Edit' },
   ];
 
-  const filteredTools = tools.filter(tool => 
-    tool.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    tool.description.toLowerCase().includes(searchQuery.toLowerCase())
+  const filtered = tools.filter(t =>
+    t.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    t.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="max-w-3xl mx-auto px-4 pt-16 pb-12 text-center">
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-black dark:text-white">
-          Convert & Manage PDFs Easily
+      {/* Hero */}
+      <section className="max-w-2xl mx-auto px-4 pt-14 pb-10 text-center">
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+          PDF Tools that work in your browser
         </h1>
-        <p className="mt-4 text-black dark:text-white text-base sm:text-lg max-w-xl mx-auto">
-          All essential PDF tools in one place. Fast. Private. Works in your browser.
+        <p className="mt-4 text-base sm:text-lg opacity-60 max-w-lg mx-auto">
+          Fast. Private. No uploads. No server. Your files never leave your device.
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link href="/tools/merge-pdf" className="px-5 py-2.5 bg-black dark:bg-white text-white dark:text-black text-sm font-semibold rounded-xl hover:opacity-80 transition-opacity">
-            Merge PDF
-          </Link>
-          <Link href="/tools/compress-pdf" className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800 transition-colors">
-            Compress PDF
-          </Link>
-          <Link href="/tools/image-to-pdf" className="px-5 py-2.5 border border-gray-300 dark:border-gray-600 text-sm font-semibold rounded-xl hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800 transition-colors">
-            Image to PDF
-          </Link>
-        </div>
-        <div className="mt-6 max-w-md mx-auto">
+        <div className="mt-8 max-w-md mx-auto">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 opacity-40" />
             <input
               type="text"
-              placeholder="Search PDF tools..."
+              placeholder="Search PDF tools…"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition-shadow"
+              className="w-full pl-10 pr-4 py-3 text-sm rounded-xl focus:outline-none"
+              style={{ background: 'var(--card)', border: '1px solid var(--border)', color: 'var(--fg)' }}
             />
           </div>
         </div>
       </section>
 
       {/* Tools Grid */}
-      <section id="tools" className="max-w-7xl mx-auto px-4 pb-16 w-full">
-        <h2 className="text-2xl font-bold text-center mb-8">All PDF Tools</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
-          {filteredTools.map((tool) => (
+      <section className="max-w-7xl mx-auto px-4 pb-16 w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-3">
+          {filtered.map((tool) => (
             <ToolCard key={tool.title} {...tool} />
           ))}
         </div>
-        {filteredTools.length === 0 && (
-          <p className="text-center text-gray-400 mt-8">No tools found.</p>
+        {filtered.length === 0 && (
+          <p className="text-center opacity-40 mt-8">No tools found for "{searchQuery}"</p>
         )}
       </section>
 
-      {/* Why Choose Section */}
-      <section id="about" className="max-w-5xl mx-auto px-4 pb-16 w-full">
-        <h2 className="text-2xl font-bold text-center mb-8">Why Choose GENPDF</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {/* Why Section */}
+      <section className="max-w-4xl mx-auto px-4 pb-16 w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
-            { icon: Zap, title: 'Fast Processing', desc: 'Lightning-fast PDF operations right in your browser.' },
-            { icon: Shield, title: '100% Private', desc: 'Your files never leave your device.' },
-            { icon: Smartphone, title: 'Works on All Devices', desc: 'Desktop, tablet, or phone — it just works.' },
-            { icon: LayoutGrid, title: 'No Installation', desc: 'No downloads. No signups. Just open and use.' }
-          ].map((feature, i) => (
-            <div key={i} className="text-center p-6 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
+            { icon: Zap, title: 'Instant', desc: 'Results in seconds, right in your browser.' },
+            { icon: Shield, title: 'Private', desc: 'Files never leave your device.' },
+            { icon: Smartphone, title: 'Any Device', desc: 'Works on desktop, tablet, or phone.' },
+            { icon: LayoutGrid, title: 'No Install', desc: 'No downloads. No signups. Just use it.' },
+          ].map((f, i) => (
+            <div key={i} className="text-center p-5 rounded-2xl" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
               <div className="mb-3 flex justify-center">
-                <feature.icon className="h-8 w-8 text-indigo-600" />
+                <f.icon className="h-7 w-7" style={{ color: 'var(--accent)' }} />
               </div>
-              <h3 className="font-semibold mb-1 text-black dark:text-white">{feature.title}</h3>
-              <p className="text-sm text-black dark:text-white">{feature.desc}</p>
+              <h3 className="font-bold text-sm mb-1">{f.title}</h3>
+              <p className="text-xs opacity-60">{f.desc}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Blog Section */}
-      <section id="blog" className="max-w-5xl mx-auto px-4 pb-16 w-full">
-        <h2 className="text-2xl font-bold text-center mb-8">Latest Guides</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {[
-            { title: 'How to Merge PDFs Online', desc: 'Combine multiple PDF files into one in seconds.', icon: '📄' },
-            { title: 'Compress PDFs Without Quality Loss', desc: 'Reduce file size while keeping clarity intact.', icon: '🗜️' },
-            { title: 'Convert Images to PDF Easily', desc: 'Turn JPG, PNG, and more into clean PDFs.', icon: '🖼️' }
-          ].map((post, i) => (
-            <div key={i} className="rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden tool-card cursor-pointer bg-white dark:bg-gray-900">
-              <div className="h-36 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center text-4xl">
-                {post.icon}
-              </div>
-              <div className="p-4">
-                <h3 className="font-semibold mb-1 text-black dark:text-white">{post.title}</h3>
-                <p className="text-sm text-black dark:text-white mb-2">{post.desc}</p>
-                <span className="text-sm font-medium text-indigo-600 hover:underline">Read More →</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="max-w-3xl mx-auto px-4 pb-16 text-center w-full">
-        <div className="p-10 rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 text-black dark:text-white">
-          <h2 className="text-2xl font-bold mb-2">Need to work with PDFs?</h2>
-          <p className="text-black dark:text-white mb-6">Explore all tools now.</p>
-          <Link href="/tools" className="inline-block px-6 py-3 bg-black dark:bg-white text-white dark:text-black font-semibold rounded-xl hover:opacity-80 transition-opacity text-sm">
-            View All Tools
-          </Link>
-        </div>
-      </section>
-
-      {/* Stats Section at Bottom */}
-      <section className="py-12 border-t border-white/10">
-        <div className="container-custom">
-          <LiveStats />
         </div>
       </section>
     </div>

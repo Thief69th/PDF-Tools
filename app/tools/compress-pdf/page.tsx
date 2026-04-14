@@ -81,12 +81,12 @@ export default function CompressPdfPage() {
           <ArrowRight size={14} />
           <Link href="/tools" className="hover:underline">Tools</Link>
           <ArrowRight size={14} />
-          <span className="text-black dark:text-white">Compress PDF</span>
+          <span className="">Compress PDF</span>
         </nav>
 
         <div className="mb-12 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">Compress PDF</h1>
-          <p className="mt-4 text-lg text-gray-600 dark:text-white">
+          <p className="mt-4 text-lg text-gray-600 ">
             Reduce the file size of your PDF while keeping the best quality possible.
           </p>
         </div>
@@ -94,7 +94,7 @@ export default function CompressPdfPage() {
         {!file ? (
           <div 
             onClick={() => fileInputRef.current?.click()}
-            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900/50 p-12 text-center transition-all hover:border-black dark:hover:border-white cursor-pointer"
+            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-[var(--border)]  bg-[var(--card)] /50 p-12 text-center transition-all hover:border-black dark:hover:border-white cursor-pointer"
           >
             <input 
               type="file" 
@@ -103,35 +103,35 @@ export default function CompressPdfPage() {
               accept="application/pdf" 
               className="hidden" 
             />
-            <div className="mb-4 rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-sm group-hover:scale-110 transition-transform">
-              <FileDown className="h-8 w-8 text-indigo-600" />
+            <div className="mb-4 rounded-2xl bg-[var(--card)]  p-4 shadow-sm group-hover:scale-110 transition-transform">
+              <FileDown className="h-8 w-8 text-[var(--accent)]" />
             </div>
             <h3 className="text-xl font-bold">Select PDF File</h3>
-            <p className="mt-2 text-sm text-gray-500 dark:text-white">
+            <p className="mt-2 text-sm text-gray-500 ">
               Drag and drop your PDF here, or click to browse
             </p>
           </div>
         ) : (
           <div className="space-y-8">
-            <div className="flex items-center justify-between rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-6 shadow-sm">
+            <div className="flex items-center justify-between rounded-2xl border border-[var(--border)]  bg-[var(--card)]  p-6 shadow-sm">
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--card)]  text-[var(--accent)]">
                   <FileText size={24} />
                 </div>
                 <div>
                   <h4 className="font-bold">{file.name}</h4>
-                  <p className="text-sm text-gray-500 dark:text-white">Original Size: {originalSize}</p>
+                  <p className="text-sm text-gray-500 ">Original Size: {originalSize}</p>
                 </div>
               </div>
               <button 
                 onClick={() => setFile(null)}
-                className="rounded-full p-2 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-800"
+                className="rounded-full p-2 hover:bg-[var(--card)]  "
               >
                 <X size={20} />
               </button>
             </div>
 
-            <div className="rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-8 shadow-sm">
+            <div className="rounded-2xl border border-[var(--border)]  bg-[var(--card)]  p-8 shadow-sm">
               <h3 className="mb-6 text-lg font-bold text-center">Select Compression Level</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {[
@@ -144,8 +144,8 @@ export default function CompressPdfPage() {
                     onClick={() => setCompressionLevel(level.id as any)}
                     className={`flex flex-col items-center p-6 rounded-2xl border-2 transition-all ${
                       compressionLevel === level.id 
-                        ? 'border-black bg-black text-white dark:border-white dark:bg-white dark:text-black' 
-                        : 'border-gray-100 bg-gray-50 dark:bg-gray-900 dark:border-gray-800 dark:bg-gray-900 hover:border-gray-300'
+                        ? 'border-black bg-black text-white dark:border-white dark:bg-[var(--card)] dark:text-black' 
+                        : 'border-[var(--border)] bg-[var(--card)]    hover:border-gray-300'
                     }`}
                   >
                     <span className="font-bold mb-1">{level.label}</span>
@@ -158,7 +158,7 @@ export default function CompressPdfPage() {
                 <button
                   onClick={compressPdf}
                   disabled={isGenerating}
-                  className="flex w-full max-w-xs items-center justify-center gap-2 rounded-2xl bg-black px-8 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-gray-800 disabled:opacity-50 dark:bg-white dark:text-black dark:hover:bg-gray-200 sm:w-auto"
+                  className="flex w-full max-w-xs items-center justify-center gap-2 rounded-2xl px-8 py-4 text-sm font-bold shadow-lg transition-all hover:opacity-80 disabled:opacity-40" style={{ background: "var(--accent)", color: "var(--accent-fg)" }} className=" dark:bg-[var(--card)] dark:dark:hover:bg-gray-200 sm:w-auto"
                 >
                   {isGenerating ? (
                     <>
@@ -179,20 +179,20 @@ export default function CompressPdfPage() {
 
         {/* Info Section */}
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">🗜️</div>
             <h3 className="mb-2 font-bold">Smart Compression</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Our algorithms reduce file size while maintaining visual clarity.</p>
+            <p className="text-sm text-gray-500 ">Our algorithms reduce file size while maintaining visual clarity.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">🔒</div>
             <h3 className="mb-2 font-bold">100% Private</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Your files are processed in your browser. No uploads required.</p>
+            <p className="text-sm text-gray-500 ">Your files are processed in your browser. No uploads required.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 dark:border-gray-800 p-6">
+          <div className="rounded-2xl border border-[var(--border)]  p-6">
             <div className="mb-4 text-2xl">⚡</div>
             <h3 className="mb-2 font-bold">Fast & Efficient</h3>
-            <p className="text-sm text-gray-500 dark:text-white">Get your compressed PDF in seconds, ready for email or web upload.</p>
+            <p className="text-sm text-gray-500 ">Get your compressed PDF in seconds, ready for email or web upload.</p>
           </div>
         </div>
       </div>

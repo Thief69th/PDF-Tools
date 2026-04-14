@@ -167,12 +167,12 @@ export default function AddSignaturePage() {
           <ArrowRight size={14} />
           <Link href="/tools" className="hover:underline">Tools</Link>
           <ArrowRight size={14} />
-          <span className="text-black dark:text-white">Add Signature</span>
+          <span className="">Add Signature</span>
         </nav>
 
         <div className="mb-12 text-center">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl text-black dark:text-white">Add Signature</h1>
-          <p className="mt-4 text-lg text-black dark:text-white">
+          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl ">Add Signature</h1>
+          <p className="mt-4 text-lg ">
             Sign your PDF documents by drawing a signature or uploading an image.
           </p>
         </div>
@@ -180,7 +180,7 @@ export default function AddSignaturePage() {
         {!file ? (
           <div 
             onClick={() => fileInputRef.current?.click()}
-            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-200 bg-gray-50 dark:bg-gray-900 p-12 text-center transition-all hover:border-black cursor-pointer"
+            className="group relative flex flex-col items-center justify-center rounded-3xl border-2 border-dashed border-[var(--border)] bg-[var(--card)]  p-12 text-center transition-all hover:border-black cursor-pointer"
           >
             <input 
               type="file" 
@@ -189,49 +189,49 @@ export default function AddSignaturePage() {
               accept="application/pdf" 
               className="hidden" 
             />
-            <div className="mb-4 rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-sm group-hover:scale-110 transition-transform">
-              <PenTool className="h-8 w-8 text-indigo-600" />
+            <div className="mb-4 rounded-2xl bg-[var(--card)]  p-4 shadow-sm group-hover:scale-110 transition-transform">
+              <PenTool className="h-8 w-8 text-[var(--accent)]" />
             </div>
-            <h3 className="text-xl font-bold text-black dark:text-white">Select PDF File</h3>
-            <p className="mt-2 text-sm text-black dark:text-white">
+            <h3 className="text-xl font-bold ">Select PDF File</h3>
+            <p className="mt-2 text-sm ">
               Drag and drop your PDF here, or click to browse
             </p>
           </div>
         ) : (
           <div className="space-y-8">
-            <div className="flex items-center justify-between rounded-2xl border border-gray-200 bg-white dark:bg-gray-800 p-6 shadow-sm">
+            <div className="flex items-center justify-between rounded-2xl border border-[var(--border)] bg-[var(--card)]  p-6 shadow-sm">
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--card)] text-[var(--accent)]">
                   <FileText size={24} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-black dark:text-white">{file.name}</h4>
-                  <p className="text-sm text-black dark:text-white">{totalPages} Pages detected</p>
+                  <h4 className="font-bold ">{file.name}</h4>
+                  <p className="text-sm ">{totalPages} Pages detected</p>
                 </div>
               </div>
               <button 
                 onClick={() => setFile(null)}
-                className="rounded-full p-2 hover:bg-gray-100 dark:bg-gray-800"
+                className="rounded-full p-2 hover:bg-[var(--card)] "
               >
-                <X size={20} className="text-black dark:text-white" />
+                <X size={20} className="" />
               </button>
             </div>
 
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
               {/* Signature Creation */}
-              <div className="rounded-3xl border border-gray-200 bg-white dark:bg-gray-800 p-6 shadow-sm">
+              <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)]  p-6 shadow-sm">
                 <div className="mb-6 flex items-center justify-between">
-                  <h3 className="text-lg font-bold text-black dark:text-white">Create Signature</h3>
-                  <div className="flex gap-2 rounded-full bg-gray-100 dark:bg-gray-800 p-1">
+                  <h3 className="text-lg font-bold ">Create Signature</h3>
+                  <div className="flex gap-2 rounded-full bg-[var(--card)]  p-1">
                     <button 
                       onClick={() => setSignatureType('draw')}
-                      className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all ${signatureType === 'draw' ? 'bg-white dark:bg-gray-800 text-black dark:text-white shadow-sm' : 'text-gray-500 dark:text-white'}`}
+                      className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all ${signatureType === 'draw' ? 'bg-[var(--card)]   shadow-sm' : 'text-gray-500 '}`}
                     >
                       Draw
                     </button>
                     <button 
                       onClick={() => setSignatureType('upload')}
-                      className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all ${signatureType === 'upload' ? 'bg-white dark:bg-gray-800 text-black dark:text-white shadow-sm' : 'text-gray-500 dark:text-white'}`}
+                      className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all ${signatureType === 'upload' ? 'bg-[var(--card)]   shadow-sm' : 'text-gray-500 '}`}
                     >
                       Upload
                     </button>
@@ -240,7 +240,7 @@ export default function AddSignaturePage() {
 
                 {signatureType === 'draw' ? (
                   <div className="space-y-4">
-                    <div className="relative rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 dark:bg-gray-900 overflow-hidden aspect-[2/1]">
+                    <div className="relative rounded-2xl border-2 border-dashed border-[var(--border)] bg-[var(--card)]  overflow-hidden aspect-[2/1]">
                       <canvas 
                         ref={canvasRef}
                         width={400}
@@ -272,7 +272,7 @@ export default function AddSignaturePage() {
                   <div className="space-y-4">
                     <div 
                       onClick={() => sigFileInputRef.current?.click()}
-                      className="group relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50 dark:bg-gray-900 p-8 text-center transition-all hover:border-black cursor-pointer aspect-[2/1]"
+                      className="group relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[var(--border)] bg-[var(--card)]  p-8 text-center transition-all hover:border-black cursor-pointer aspect-[2/1]"
                     >
                       <input 
                         type="file" 
@@ -290,30 +290,30 @@ export default function AddSignaturePage() {
                         </>
                       )}
                     </div>
-                    <p className="text-[10px] text-black dark:text-white opacity-50">Recommended: Transparent PNG signature.</p>
+                    <p className="text-[10px]  opacity-50">Recommended: Transparent PNG signature.</p>
                   </div>
                 )}
               </div>
 
               {/* Placement Settings */}
-              <div className="rounded-3xl border border-gray-200 bg-white dark:bg-gray-800 p-6 shadow-sm">
-                <h3 className="text-lg font-bold text-black dark:text-white mb-6">Placement Settings</h3>
+              <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)]  p-6 shadow-sm">
+                <h3 className="text-lg font-bold  mb-6">Placement Settings</h3>
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-bold text-black dark:text-white mb-2">Page Number (1-{totalPages})</label>
+                    <label className="block text-sm font-bold  mb-2">Page Number (1-{totalPages})</label>
                     <input 
                       type="number"
                       min={1}
                       max={totalPages}
                       value={pageNumber}
                       onChange={(e) => setPageNumber(Math.min(totalPages, Math.max(1, parseInt(e.target.value) || 1)))}
-                      className="w-full rounded-xl border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-black text-black dark:text-white"
+                      className="w-full rounded-xl border border-[var(--border)] p-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)] "
                     />
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-bold text-black dark:text-white mb-2">X Position (%)</label>
+                      <label className="block text-sm font-bold  mb-2">X Position (%)</label>
                       <input 
                         type="range"
                         min={0}
@@ -324,7 +324,7 @@ export default function AddSignaturePage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-black dark:text-white mb-2">Y Position (%)</label>
+                      <label className="block text-sm font-bold  mb-2">Y Position (%)</label>
                       <input 
                         type="range"
                         min={0}
@@ -337,7 +337,7 @@ export default function AddSignaturePage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-black dark:text-white mb-2">Scale ({Math.round(scale * 100)}%)</label>
+                    <label className="block text-sm font-bold  mb-2">Scale ({Math.round(scale * 100)}%)</label>
                     <input 
                       type="range"
                       min={0.1}
@@ -354,7 +354,7 @@ export default function AddSignaturePage() {
                   <button
                     onClick={addSignature}
                     disabled={isGenerating || !signatureImage}
-                    className="flex w-full items-center justify-center gap-2 rounded-2xl bg-black px-8 py-4 text-sm font-bold text-white shadow-lg transition-all hover:bg-gray-800 disabled:opacity-50"
+                    className="flex w-full items-center justify-center gap-2 rounded-2xl px-8 py-4 text-sm font-bold shadow-lg transition-all hover:opacity-80 disabled:opacity-40" style={{ background: "var(--accent)", color: "var(--accent-fg)" }} className=""
                   >
                     {isGenerating ? (
                       <>
@@ -375,20 +375,20 @@ export default function AddSignaturePage() {
         )}
 
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div className="rounded-2xl border border-gray-100 p-6">
+          <div className="rounded-2xl border border-[var(--border)] p-6">
             <div className="mb-4 text-2xl">✍️</div>
-            <h3 className="mb-2 font-bold text-black dark:text-white">Draw Signature</h3>
-            <p className="text-sm text-black dark:text-white opacity-60">Use your mouse or touch screen to draw a natural-looking signature.</p>
+            <h3 className="mb-2 font-bold ">Draw Signature</h3>
+            <p className="text-sm  opacity-60">Use your mouse or touch screen to draw a natural-looking signature.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 p-6">
+          <div className="rounded-2xl border border-[var(--border)] p-6">
             <div className="mb-4 text-2xl">📤</div>
-            <h3 className="mb-2 font-bold text-black dark:text-white">Upload Image</h3>
-            <p className="text-sm text-black dark:text-white opacity-60">Already have a digital signature? Upload it and place it on any page.</p>
+            <h3 className="mb-2 font-bold ">Upload Image</h3>
+            <p className="text-sm  opacity-60">Already have a digital signature? Upload it and place it on any page.</p>
           </div>
-          <div className="rounded-2xl border border-gray-100 p-6">
+          <div className="rounded-2xl border border-[var(--border)] p-6">
             <div className="mb-4 text-2xl">🔒</div>
-            <h3 className="mb-2 font-bold text-black dark:text-white">Secure & Private</h3>
-            <p className="text-sm text-black dark:text-white opacity-60">Your signature and documents are processed locally. Nothing is uploaded.</p>
+            <h3 className="mb-2 font-bold ">Secure & Private</h3>
+            <p className="text-sm  opacity-60">Your signature and documents are processed locally. Nothing is uploaded.</p>
           </div>
         </div>
       </div>
