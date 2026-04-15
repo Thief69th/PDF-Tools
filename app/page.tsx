@@ -2,11 +2,11 @@
 
 import React from 'react';
 import {
-  FileText, Merge, Scissors, FileSearch, FileUp, FileDown,
-  Search, Zap, Shield, Smartphone, LayoutGrid, Trash2, PlusSquare,
-  Type, FileSpreadsheet, Lock, Unlock, PenTool, Hash, Image,
-  AlignLeft, Layers, List, QrCode, ScanText, FileEdit, BookOpen,
-  RotateCcw, Camera, FileImage
+  FileText, Merge, Scissors, FileDown, FileUp, Lock, Unlock,
+  Image as ImageIcon, Trash2, PlusSquare, Type, FileSpreadsheet,
+  ScanText, Hash, PenTool, QrCode, RotateCcw, AlignLeft, FileImage,
+  MousePointer2, BookOpen, List, FileEdit, Camera, Search, Zap, Shield,
+  Smartphone, LayoutGrid, Sparkles
 } from 'lucide-react';
 import Link from 'next/link';
 import ToolCard from '@/components/ToolCard';
@@ -15,30 +15,38 @@ export default function HomePage() {
   const [searchQuery, setSearchQuery] = React.useState('');
 
   const tools = [
-    { title: 'Merge PDF', description: 'Combine multiple PDFs into one document.', icon: Merge, href: '/tools/merge-pdf', category: 'PDF Tool' },
-    { title: 'Split PDF', description: 'Extract pages or split PDF into separate files.', icon: Scissors, href: '/tools/split-pdf', category: 'PDF Tool' },
-    { title: 'PDF to Text', description: 'Extract all text content from PDF documents.', icon: FileText, href: '/tools/pdf-to-text', category: 'Convert' },
-    { title: 'Compress PDF', description: 'Reduce PDF file size while keeping quality.', icon: FileDown, href: '/tools/compress-pdf', category: 'Optimize' },
-    { title: 'Image to PDF', description: 'Convert JPG, PNG images into clean PDFs.', icon: FileUp, href: '/tools/image-to-pdf', category: 'Convert' },
-    { title: 'Excel to PDF', description: 'Convert Excel and CSV files into PDF tables.', icon: FileSpreadsheet, href: '/tools/excel-to-pdf', category: 'Convert' },
-    { title: 'Delete Pages', description: 'Remove unwanted pages from your PDF.', icon: Trash2, href: '/tools/delete-pdf-pages', category: 'PDF Tool' },
-    { title: 'Add Page Numbers', description: 'Add custom page numbers to any PDF.', icon: Hash, href: '/tools/add-page-numbers', category: 'Edit' },
-    { title: 'Add Watermark', description: 'Add text or image watermarks to PDFs.', icon: PenTool, href: '/tools/add-watermark', category: 'Edit' },
-    { title: 'Add Signature', description: 'Draw or type a signature on your PDF.', icon: FileEdit, href: '/tools/add-signature', category: 'Edit' },
-    { title: 'Add Text', description: 'Add custom text anywhere on your PDF pages.', icon: Type, href: '/tools/add-text', category: 'Edit' },
-    { title: 'Add QR Code', description: 'Embed QR codes into your PDF documents.', icon: QrCode, href: '/tools/add-qr-code', category: 'Edit' },
-    { title: 'Add Blank Page', description: 'Insert blank pages into your PDF.', icon: PlusSquare, href: '/tools/add-blank-page', category: 'PDF Tool' },
-    { title: 'Add PDF Page', description: 'Insert pages from another PDF into yours.', icon: Layers, href: '/tools/add-pdf-page', category: 'PDF Tool' },
-    { title: 'Reorder Pages', description: 'Drag and drop to rearrange PDF pages.', icon: RotateCcw, href: '/tools/reorder-pages', category: 'PDF Tool' },
-    { title: 'Protect PDF', description: 'Add password protection to your PDF.', icon: Lock, href: '/tools/protect-pdf', category: 'Security' },
-    { title: 'Unlock PDF', description: 'Remove password from protected PDFs.', icon: Unlock, href: '/tools/unlock-pdf', category: 'Security' },
-    { title: 'Edit Metadata', description: 'Edit title, author, and PDF properties.', icon: FileSearch, href: '/tools/edit-metadata', category: 'Edit' },
-    { title: 'PDF to Image', description: 'Convert PDF pages to PNG or JPG images.', icon: FileImage, href: '/tools/pdf-to-image', category: 'Convert' },
-    { title: 'Text to PDF', description: 'Convert plain text into a PDF document.', icon: AlignLeft, href: '/tools/text-to-pdf', category: 'Convert' },
-    { title: 'Screenshot to PDF', description: 'Convert screenshots into PDF documents.', icon: Camera, href: '/tools/screenshot-to-pdf', category: 'Convert' },
-    { title: 'Add Index Page', description: 'Auto-generate a table of contents.', icon: BookOpen, href: '/tools/add-index-page', category: 'Edit' },
-    { title: 'Resume Builder', description: 'Build a professional resume as PDF.', icon: List, href: '/tools/resume-builder', category: 'Create' },
-    { title: 'Remove Watermark', description: 'Remove watermarks from PDF files.', icon: ScanText, href: '/tools/remove-watermark', category: 'Edit' },
+    // Organize
+    { title: 'Merge PDF',        description: 'Combine multiple PDFs into one document.',        icon: Merge,          href: '/tools/merge-pdf',         category: 'Organize' },
+    { title: 'Split PDF',        description: 'Extract pages or split into separate files.',     icon: Scissors,       href: '/tools/split-pdf',         category: 'Organize' },
+    { title: 'Reorder Pages',    description: 'Drag & drop to rearrange PDF pages.',             icon: RotateCcw,      href: '/tools/reorder-pages',     category: 'Organize' },
+    { title: 'Delete Pages',     description: 'Remove unwanted pages from your PDF.',            icon: Trash2,         href: '/tools/delete-pdf-pages',  category: 'Organize' },
+    { title: 'Add PDF Page',     description: 'Insert pages from another PDF.',                  icon: PlusSquare,     href: '/tools/add-pdf-page',      category: 'Organize' },
+    { title: 'Add Blank Page',   description: 'Insert blank pages into your PDF.',               icon: PlusSquare,     href: '/tools/add-blank-page',    category: 'Organize' },
+    // Edit
+    { title: 'Add Text',         description: 'Place custom text anywhere on PDF pages.',        icon: MousePointer2,  href: '/tools/add-text',          category: 'Edit' },
+    { title: 'Add Page Numbers', description: 'Add page numbers with custom positioning.',       icon: Hash,           href: '/tools/add-page-numbers',  category: 'Edit' },
+    { title: 'Add Watermark',    description: 'Add text watermarks to PDF pages.',               icon: Type,           href: '/tools/add-watermark',     category: 'Edit' },
+    { title: 'Add Signature',    description: 'Sign your PDFs with drawn or typed signatures.', icon: PenTool,        href: '/tools/add-signature',     category: 'Edit' },
+    { title: 'Add QR Code',      description: 'Embed QR codes into PDF documents.',              icon: QrCode,         href: '/tools/add-qr-code',       category: 'Edit' },
+    { title: 'Add Index Page',   description: 'Auto-generate a table of contents.',              icon: BookOpen,       href: '/tools/add-index-page',    category: 'Edit' },
+    { title: 'Edit Metadata',    description: 'Change title, author, and PDF properties.',       icon: FileEdit,       href: '/tools/edit-metadata',     category: 'Edit' },
+    { title: 'Remove Watermark', description: 'Strip watermark layers from PDFs.',               icon: ScanText,       href: '/tools/remove-watermark',  category: 'Edit' },
+    // Security
+    { title: 'Protect PDF',      description: 'Add password protection to your PDF.',            icon: Lock,           href: '/tools/protect-pdf',       category: 'Security' },
+    { title: 'Unlock PDF',       description: 'Remove password from protected PDFs.',            icon: Unlock,         href: '/tools/unlock-pdf',        category: 'Security' },
+    { title: 'Compress PDF',     description: 'Reduce PDF file size, 10 smart presets.',         icon: FileDown,       href: '/tools/compress-pdf',      category: 'Security' },
+    // Convert from PDF
+    { title: 'PDF to Text',      description: 'Extract all text from PDF documents.',            icon: FileText,       href: '/tools/pdf-to-text',       category: 'Convert' },
+    { title: 'PDF to Image',     description: 'Save PDF pages as PNG/JPG images.',               icon: FileImage,      href: '/tools/pdf-to-image',      category: 'Convert' },
+    { title: 'PDF to Word',      description: 'Convert PDF to editable Word document with AI.',  icon: FileText,       href: '/tools/pdf-to-word',       category: 'Convert', ai: true },
+    { title: 'PDF to Excel',     description: 'Extract tables from PDF into Excel spreadsheet.', icon: FileSpreadsheet,href: '/tools/pdf-to-excel',      category: 'Convert', ai: true },
+    // Convert to PDF
+    { title: 'Image to PDF',     description: 'Convert JPG, PNG images to PDF.',                 icon: ImageIcon,      href: '/tools/image-to-pdf',      category: 'Convert' },
+    { title: 'Screenshot to PDF',description: 'Convert screenshots to PDF.',                     icon: Camera,         href: '/tools/screenshot-to-pdf', category: 'Convert' },
+    { title: 'Excel to PDF',     description: 'Convert Excel/CSV files to PDF tables.',          icon: FileSpreadsheet,href: '/tools/excel-to-pdf',      category: 'Convert' },
+    { title: 'Text to PDF',      description: 'Convert plain text into a PDF document.',         icon: AlignLeft,      href: '/tools/text-to-pdf',       category: 'Convert' },
+    // Create
+    { title: 'Resume Builder',   description: 'Build a professional resume as PDF.',             icon: List,           href: '/tools/resume-builder',    category: 'Create' },
   ];
 
   const filtered = tools.filter(t =>
@@ -56,12 +64,16 @@ export default function HomePage() {
         <p className="mt-4 text-base sm:text-lg opacity-60 max-w-lg mx-auto">
           Fast. Private. No uploads. No server. Your files never leave your device.
         </p>
-        <div className="mt-8 max-w-md mx-auto">
+        <div className="mt-2 flex items-center justify-center gap-2 text-xs font-bold opacity-50">
+          <Sparkles size={11} />
+          <span>PDF to Word &amp; PDF to Excel powered by Claude AI</span>
+        </div>
+        <div className="mt-7 max-w-md mx-auto">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 opacity-40" />
             <input
               type="text"
-              placeholder="Search PDF tools…"
+              placeholder="Search 26 PDF tools…"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-3 text-sm rounded-xl focus:outline-none"
@@ -75,7 +87,15 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 pb-16 w-full">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6 gap-3">
           {filtered.map((tool) => (
-            <ToolCard key={tool.title} {...tool} />
+            <div key={tool.title} className="relative">
+              {(tool as any).ai && (
+                <div className="absolute -top-1.5 -right-1.5 z-10 flex items-center gap-0.5 text-[9px] font-black px-1.5 py-0.5 rounded-full"
+                  style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}>
+                  <Sparkles size={8} /> AI
+                </div>
+              )}
+              <ToolCard {...tool} />
+            </div>
           ))}
         </div>
         {filtered.length === 0 && (
@@ -87,8 +107,8 @@ export default function HomePage() {
       <section className="max-w-4xl mx-auto px-4 pb-16 w-full">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
-            { icon: Zap, title: 'Instant', desc: 'Results in seconds, right in your browser.' },
-            { icon: Shield, title: 'Private', desc: 'Files never leave your device.' },
+            { icon: Zap,        title: 'Instant',    desc: 'Results in seconds, right in your browser.' },
+            { icon: Shield,     title: 'Private',    desc: 'Files never leave your device.' },
             { icon: Smartphone, title: 'Any Device', desc: 'Works on desktop, tablet, or phone.' },
             { icon: LayoutGrid, title: 'No Install', desc: 'No downloads. No signups. Just use it.' },
           ].map((f, i) => (

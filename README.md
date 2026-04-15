@@ -1,20 +1,68 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# GENPDF — Free PDF Tools
 
-# Run and deploy your AI Studio app
+Fast. Private. Works in your browser.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/8b8d869c-0049-44ae-83aa-171bb50f679d
+- **26 PDF Tools** — Merge, Split, Compress, Edit, Convert, Sign and more
+- **10 Themes** — Light, Dark, Warm, Ocean, Forest, Sunset, Midnight, Rose, Slate, Aurora
+- **AI-Powered** — PDF to Word & PDF to Excel use Claude AI (Anthropic)
+- **Privacy First** — All browser-based tools run 100% locally. No upload, no server.
 
-## Run Locally
+## Quick Start
 
-**Prerequisites:**  Node.js
+```bash
+npm install
+npm run dev
+```
 
+## AI Tools Setup (PDF to Word & PDF to Excel)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+These two tools use the [Anthropic Claude API](https://console.anthropic.com) for vision-based conversion.
+
+1. Get your API key from https://console.anthropic.com/settings/keys
+2. Create a `.env` file:
+
+```env
+ANTHROPIC_API_KEY=sk-ant-...
+```
+
+3. The tools will work automatically. Without the key, you'll see a clear error message.
+
+## All Tools
+
+### Browser-based (No API needed)
+- Merge PDF, Split PDF, Reorder Pages, Delete Pages
+- Add PDF Page, Add Blank Page, Add Index Page
+- Add Text, Add Page Numbers, Add Watermark, Add Signature, Add QR Code
+- Edit Metadata, Remove Watermark
+- Protect PDF, Unlock PDF, Compress PDF (10 presets)
+- PDF to Text, PDF to Image
+- Image to PDF, Screenshot to PDF, Excel to PDF, Text to PDF
+- Resume Builder
+
+### AI-Powered (Needs ANTHROPIC_API_KEY)
+- **PDF to Word** — Claude Vision reads each page, reconstructs as .doc
+- **PDF to Excel** — Claude Vision extracts all tables as .xlsx with preview
+
+## Server Requirements (for Protect/Unlock PDF)
+
+Protect PDF and Unlock PDF use **qpdf** (installed on server) for real AES-256 encryption.
+
+### Ubuntu/Debian
+```bash
+sudo apt install qpdf
+```
+
+### macOS
+```bash
+brew install qpdf
+```
+
+### Vercel / Railway / Fly.io / Docker
+Add to your Dockerfile:
+```dockerfile
+RUN apt-get install -y qpdf
+```
+
+**Privacy guarantee:** PDF files are written to a random `/tmp/.{hex}.pdf` path (mode 0600), processed immediately, and deleted before the API response is sent. Zero persistence. Nothing is logged.
