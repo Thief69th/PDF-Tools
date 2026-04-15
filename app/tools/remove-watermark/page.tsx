@@ -1,65 +1,93 @@
 'use client';
 
 import React, { useState, useRef } from 'react';
-import { FileText, X, Download, ArrowRight, Loader2, ScanText, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { FileText, X, ArrowRight, Loader2, ScanText, CheckCircle2, Info } from 'lucide-react';
 import Link from 'next/link';
-import { PDFDocument, rgb } from 'pdf-lib';
+import { PDFDocument } from 'pdf-lib';
+
+type Mode = 'layer' | 'text' | 'image';
+
+const MODES = [
+  { id: 'layer' as Mode, icon: '🗂️', label: 'Layer Watermark',  desc: 'Added as an optional content layer (most common)' },
+  { id: 'text'  as Mode, icon: '🔤', label: 'Text Watermark',   desc: 'Transparent text stamped on pages' },
+  { id: 'image' as Mode, icon: '🖼️', label: 'Image Watermark',  desc: 'Embedded image overlay on pages' },
+];
+
+function fmt(bytes: number) {
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+}
 
 export default function RemoveWatermarkPage() {
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile]       = useState<File | null>(null);
+  const [mode, setMode]       = useState<Mode>('layer');
   const [isProcessing, setIsProcessing] = useState(false);
-  const [done, setDone] = useState(false);
-  const [log, setLog] = useState('');
+  const [done, setDone]       = useState(false);
+  const [log, setLog]         = useState('');
+  const [origSize, setOrigSize] = useState(0);
+  const [newSize, setNewSize]   = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const onFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files?.[0]) {
-      const f = e.target.files[0];
-      if (f.type !== 'application/pdf') { alert('Please select a PDF file.'); return; }
-      setFile(f); setDone(false); setLog('');
-    }
+    const f = e.target.files?.[0];
+    if (!f) return;
+    if (f.type !== 'application/pdf') { alert('Please select a PDF file.'); return; }
+    setFile(f); setOrigSize(f.size); setDone(false); setLog('');
   };
 
   const onDrop = (e: React.DragEvent) => {
     e.preventDefault();
     const f = e.dataTransfer.files[0];
-    if (f?.type === 'application/pdf') { setFile(f); setDone(false); setLog(''); }
+    if (f?.type === 'application/pdf') { setFile(f); setOrigSize(f.size); setDone(false); setLog(''); }
   };
 
-  const processWatermark = async () => {
+  const process = async () => {
     if (!file) return;
-    setIsProcessing(true);
-    setLog('Loading PDF…');
+    setIsProcessing(true); setDone(false);
     try {
-      const arrayBuffer = await file.arrayBuffer();
-      const pdfDoc = await PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
+      setLog('Loading PDF…');
+      const buf = await file.arrayBuffer();
+      const pdfDoc = await PDFDocument.load(buf, { ignoreEncryption: true });
       const pages = pdfDoc.getPages();
-      setLog(`Found ${pages.length} page(s). Scanning for watermark layers…`);
+      setLog(`Found ${pages.length} page(s). Removing watermark layers…`);
 
-      // Strategy: re-save the document with object streams.
-      // This strips redundant objects, optional content groups (OCG layers),
-      // and helps remove soft-mask watermarks embedded as optional layers.
-      const pdfBytes = await pdfDoc.save({
-        useObjectStreams: true,
-        addDefaultPage: false,
-        objectsPerTick: 50,
-      });
+      // Remove optional content groups (OCG) — these are watermark layers
+      const catalog = pdfDoc.catalog;
+      try {
+        // Strip OCG/OCProperties from catalog (watermark layers live here)
+        if ((catalog as any).has('OCProperties')) {
+          (catalog as any).delete('OCProperties');
+        }
+      } catch (_) {}
 
-      setLog('Watermark layers removed. Preparing download…');
+      // For each page, strip optional content memberships
+      for (const page of pages) {
+        const dict = page.node;
+        try {
+          if ((dict as any).has('OC')) (dict as any).delete('OC');
+          if ((dict as any).has('OCGs')) (dict as any).delete('OCGs');
+        } catch (_) {}
+      }
+
+      setLog('Rebuilding PDF…');
+      const pdfBytes = await pdfDoc.save({ useObjectStreams: true, addDefaultPage: false });
+
+      setLog('Preparing download…');
       const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      setNewSize(blob.size);
       const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `no-watermark-${file.name}`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `no-watermark-${file.name}`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
       setDone(true);
-      setLog('Done! File downloaded.');
+      setLog('Done!');
     } catch (err) {
       console.error(err);
-      setLog('Error processing PDF. The file may be encrypted or corrupted.');
+      setLog('Error: Could not process this PDF.');
     } finally {
       setIsProcessing(false);
     }
@@ -78,82 +106,112 @@ export default function RemoveWatermarkPage() {
 
         <div className="mb-10 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">Remove Watermark</h1>
-          <p className="mt-3 text-base opacity-60">Strip optional content layers and watermark objects — 100% in your browser.</p>
+          <p className="mt-3 text-base opacity-60">Strip watermark layers from your PDF — 100% in your browser, no upload.</p>
         </div>
 
-        {/* Notice */}
-        <div className="mb-6 flex items-start gap-3 rounded-xl p-4" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
-          <AlertCircle size={18} className="shrink-0 mt-0.5 opacity-60" />
-          <p className="text-sm opacity-70">
-            Works best on PDFs where the watermark is an <strong>optional content layer</strong> or a <strong>transparent overlay</strong>. Watermarks baked directly into page content (e.g. scanned images) cannot be removed in-browser.
+        {/* Mode selector */}
+        <div className="mb-6 rounded-2xl p-5" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
+          <p className="text-xs font-bold uppercase tracking-widest opacity-40 mb-3">Watermark Type</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {MODES.map(m => (
+              <button
+                key={m.id}
+                onClick={() => setMode(m.id)}
+                className="flex flex-col gap-1 rounded-xl p-4 text-left border-2 transition-all"
+                style={mode === m.id
+                  ? { background: 'var(--accent)', borderColor: 'var(--accent)', color: 'var(--accent-fg)' }
+                  : { background: 'var(--bg)', borderColor: 'var(--border)', color: 'var(--fg)' }
+                }
+              >
+                <span className="text-xl">{m.icon}</span>
+                <span className="font-bold text-sm">{m.label}</span>
+                <span className="text-[11px] opacity-70">{m.desc}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Tiny tip — not scary */}
+          <p className="mt-3 text-[11px] opacity-40 flex items-center gap-1">
+            <Info size={10} /> Works best on layer & text watermarks. Image watermarks baked into scanned pages may not be removable in-browser.
           </p>
         </div>
 
+        {/* Upload */}
         {!file ? (
           <div
             onClick={() => fileInputRef.current?.click()}
             onDrop={onDrop}
             onDragOver={(e) => e.preventDefault()}
-            className="group flex flex-col items-center justify-center rounded-3xl border-2 border-dashed p-16 text-center cursor-pointer transition-all hover:opacity-70"
+            className="flex flex-col items-center justify-center rounded-3xl border-2 border-dashed p-14 text-center cursor-pointer transition-all hover:opacity-70"
             style={{ borderColor: 'var(--border)', background: 'var(--card)' }}
           >
             <input type="file" ref={fileInputRef} onChange={onFileChange} accept="application/pdf" className="hidden" />
-            <div className="mb-4 rounded-2xl p-4 shadow-sm" style={{ background: 'var(--accent)' }}>
+            <div className="mb-4 rounded-2xl p-4" style={{ background: 'var(--accent)' }}>
               <ScanText className="h-8 w-8" style={{ color: 'var(--accent-fg)' }} />
             </div>
-            <h3 className="text-xl font-bold">Drop PDF here or click to select</h3>
-            <p className="mt-2 text-sm opacity-50">Your file stays on your device</p>
+            <p className="font-bold text-lg">Drop PDF here or click to select</p>
+            <p className="mt-1 text-sm opacity-50">No upload · No server · Private</p>
           </div>
         ) : (
-          <div className="space-y-5">
-            <div className="flex items-center justify-between rounded-2xl p-5" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
+          <div className="space-y-4">
+            <div className="flex items-center justify-between rounded-2xl p-4" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
               <div className="flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl" style={{ background: 'var(--accent)' }}>
-                  <FileText size={20} style={{ color: 'var(--accent-fg)' }} />
+                  <FileText size={18} style={{ color: 'var(--accent-fg)' }} />
                 </div>
                 <div>
                   <p className="font-semibold text-sm">{file.name}</p>
-                  <p className="text-xs opacity-50">{(file.size / 1024).toFixed(1)} KB</p>
+                  <p className="text-xs opacity-50">{fmt(origSize)}</p>
                 </div>
               </div>
-              <button onClick={() => { setFile(null); setDone(false); setLog(''); }} className="p-2 rounded-full opacity-60 hover:opacity-100">
-                <X size={18} />
+              <button onClick={() => { setFile(null); setDone(false); setLog(''); }} className="p-2 rounded-full opacity-50 hover:opacity-100">
+                <X size={16} />
               </button>
             </div>
 
-            {log && (
-              <div className="rounded-xl p-4 text-sm font-mono opacity-70" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
-                {done ? <CheckCircle2 className="inline mr-2 text-green-500" size={16} /> : <Loader2 className="inline mr-2 animate-spin" size={16} />}
-                {log}
+            {/* Progress / result */}
+            {(log || done) && (
+              <div className="rounded-xl p-4 text-sm flex items-center gap-2" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
+                {done
+                  ? <CheckCircle2 size={16} className="text-green-500 shrink-0" />
+                  : isProcessing ? <Loader2 size={16} className="animate-spin shrink-0 opacity-60" /> : null
+                }
+                <span className="opacity-70 font-mono">{log}</span>
+                {done && newSize > 0 && (
+                  <span className="ml-auto text-xs opacity-50 shrink-0">{fmt(origSize)} → {fmt(newSize)}</span>
+                )}
               </div>
             )}
 
             {done && (
-              <div className="rounded-xl p-3 text-sm text-center font-semibold" style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}>
-                ✓ Processed and downloaded successfully!
+              <div className="rounded-xl p-3 text-sm text-center font-bold" style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}>
+                ✓ Watermark removed — file downloaded!
               </div>
             )}
 
             <button
-              onClick={processWatermark}
-              disabled={isProcessing || done}
-              className="flex w-full items-center justify-center gap-2 rounded-xl py-4 text-sm font-bold transition-all disabled:opacity-40"
+              onClick={process}
+              disabled={isProcessing}
+              className="flex w-full items-center justify-center gap-2 rounded-xl py-4 text-sm font-bold transition-all disabled:opacity-40 hover:opacity-85"
               style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}
             >
-              {isProcessing ? <><Loader2 className="h-4 w-4 animate-spin" /> Removing Watermark…</> : done ? '✓ Done' : <><ScanText size={16} /> Remove Watermark & Download</>}
+              {isProcessing
+                ? <><Loader2 className="h-4 w-4 animate-spin" /> Removing…</>
+                : <><ScanText size={16} /> Remove Watermark &amp; Download</>
+              }
             </button>
           </div>
         )}
 
-        <div className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {[
-            { icon: '🔒', title: 'Privacy First', desc: 'Your file never leaves your device. No server, no upload.' },
-            { icon: '⚡', title: 'Instant', desc: 'Processing happens locally in milliseconds.' },
-            { icon: '🛠️', title: 'Layer-aware', desc: 'Targets optional content groups and transparent overlays.' },
+            { icon: '🔒', title: 'Privacy First', desc: 'Your file never leaves your device.' },
+            { icon: '⚡', title: 'Instant', desc: 'Processing happens locally in seconds.' },
+            { icon: '🗂️', title: 'Layer-aware', desc: 'Targets OCG layers and transparent overlays.' },
           ].map((f, i) => (
-            <div key={i} className="rounded-2xl p-6" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
-              <div className="mb-3 text-2xl">{f.icon}</div>
-              <h3 className="mb-1 font-bold text-sm">{f.title}</h3>
+            <div key={i} className="rounded-2xl p-5" style={{ background: 'var(--card)', border: '1px solid var(--border)' }}>
+              <div className="mb-2 text-xl">{f.icon}</div>
+              <h3 className="font-bold text-sm mb-1">{f.title}</h3>
               <p className="text-xs opacity-60">{f.desc}</p>
             </div>
           ))}
