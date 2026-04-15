@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+    color: #000000;
+  }
+  .dark body     { color: #ffffff; }
+  .warm body     { color: #2c1810; }
+  .ocean body    { color: #e0f0ff; }
+  .forest body   { color: #d4edda; }
+  .sunset body   { color: #fde8c8; }
+  .midnight body { color: #d0d0ff; }
+  .rose body     { color: #4a1028; }
+  .slate body    { color: #cbd5e1; }
+  .aurora body   { color: #c9d1d9; }
+}
+
+/* ── theme tokens ── */
+.dark     { --bg: #111827; --fg: #ffffff; --card: #1f2937; --border: #374151; --accent: #6366f1; --accent-fg: #fff; --muted: #9ca3af; }
+.warm     { --bg: #fdf6e3; --fg: #2c1810; --card: #fff8ec; --border: #d4c5a9; --accent: #c47c39; --accent-fg: #fff; --muted: #7a5c4e; }
+.ocean    { --bg: #0f2744; --fg: #e0f0ff; --card: #0a1e36; --border: #1a3a5c; --accent: #38bdf8; --accent-fg: #0f2744; --muted: #7db8d8; }
+.forest   { --bg: #0d2818; --fg: #d4edda; --card: #0a1f12; --border: #1a4028; --accent: #4ade80; --accent-fg: #0d2818; --muted: #6db888; }
+.sunset   { --bg: #1a0a00; --fg: #fde8c8; --card: #140800; --border: #3d1a00; --accent: #f97316; --accent-fg: #1a0a00; --muted: #c4855a; }
+.midnight { --bg: #0a0a1a; --fg: #d0d0ff; --card: #08081a; --border: #1a1a3a; --accent: #818cf8; --accent-fg: #0a0a1a; --muted: #8585c0; }
+.rose     { --bg: #fff0f3; --fg: #4a1028; --card: #fff5f7; --border: #ffd6df; --accent: #f43f5e; --accent-fg: #fff; --muted: #9b6073; }
+.slate    { --bg: #1e293b; --fg: #cbd5e1; --card: #0f172a; --border: #334155; --accent: #94a3b8; --accent-fg: #0f172a; --muted: #64748b; }
+.aurora   { --bg: #0d1117; --fg: #c9d1d9; --card: #161b22; --border: #30363d; --accent: #58c6a4; --accent-fg: #0d1117; --muted: #8b949e; }
+.light    { --bg: #ffffff; --fg: #000000; --card: #f9fafb; --border: #e5e7eb; --accent: #000000; --accent-fg: #ffffff; --muted: #6b7280; }
+
+/* ── Component styles ── */
+@layer components {
+  .container-custom {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .tool-card {
+    @apply transition-all duration-200;
+  }
+  .tool-card:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+}
