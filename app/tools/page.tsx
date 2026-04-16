@@ -2,10 +2,11 @@
 
 import React from 'react';
 import {
-  FileText, Merge, Scissors, FileDown, FileUp, Lock, Unlock,
+  FileText, Merge, Scissors, FileDown, FileUp,
   Image as ImageIcon, Trash2, PlusSquare, Type, FileSpreadsheet,
   ScanText, Hash, PenTool, QrCode, LayoutList, MousePointer2,
-  Camera, BookOpen, List, FileEdit, RotateCcw, AlignLeft, FileImage, Sparkles
+  Camera, BookOpen, List, FileEdit, RotateCcw, AlignLeft, FileImage,
+  Sparkles, Tablet, Columns
 } from 'lucide-react';
 import ToolCard from '@/components/ToolCard';
 
@@ -35,21 +36,26 @@ const categories = [
     ]
   },
   {
-    name: 'Security & Optimize',
+    name: 'Optimize',
     tools: [
-      { title: 'Protect PDF',  description: 'Add password protection to your PDF.',   icon: Lock,     href: '/tools/protect-pdf' },
-      { title: 'Unlock PDF',   description: 'Remove password from protected PDFs.',   icon: Unlock,   href: '/tools/unlock-pdf' },
-      { title: 'Compress PDF', description: 'Reduce size with 10 smart presets.',     icon: FileDown, href: '/tools/compress-pdf' },
+      { title: 'Compress PDF', description: 'Reduce size — 10 smart presets.',  icon: FileDown, href: '/tools/compress-pdf' },
+    ]
+  },
+  {
+    name: '📱 Kindle & E-Reader',
+    tools: [
+      { title: 'PDF to EPUB',       description: 'Convert PDF to EPUB for Kindle & all e-readers.',    icon: BookOpen, href: '/tools/pdf-to-epub',       ai: true },
+      { title: 'PDF for Kindle',    description: 'Resize PDF pages to exact Kindle screen size.',       icon: Tablet,   href: '/tools/pdf-for-kindle' },
+      { title: 'Split PDF Columns', description: 'Split 2-3 column PDFs into Kindle-readable pages.',  icon: Columns,  href: '/tools/pdf-split-columns' },
     ]
   },
   {
     name: 'Convert from PDF',
-    ai: false,
     tools: [
-      { title: 'PDF to Text',  description: 'Extract all text from PDF documents.', icon: FileText,       href: '/tools/pdf-to-text',  ai: false },
-      { title: 'PDF to Image', description: 'Save PDF pages as PNG/JPG images.',    icon: FileImage,      href: '/tools/pdf-to-image', ai: false },
+      { title: 'PDF to Text',  description: 'Extract all text from PDF documents.', icon: FileText,       href: '/tools/pdf-to-text',  },
+      { title: 'PDF to Image', description: 'Save PDF pages as PNG/JPG images.',    icon: FileImage,      href: '/tools/pdf-to-image', },
       { title: 'PDF to Word',  description: 'Convert PDF to editable Word doc.',    icon: FileText,       href: '/tools/pdf-to-word',  ai: true },
-      { title: 'PDF to Excel', description: 'Extract tables into Excel spreadsheet.',icon: FileSpreadsheet,href: '/tools/pdf-to-excel', ai: true },
+      { title: 'PDF to Excel', description: 'Extract tables to Excel spreadsheet.', icon: FileSpreadsheet,href: '/tools/pdf-to-excel', ai: true },
     ]
   },
   {
@@ -75,9 +81,11 @@ export default function ToolsPage() {
       <div className="mx-auto max-w-xl text-center mb-14">
         <h1 className="text-3xl font-bold tracking-tight sm:text-5xl">All PDF Tools</h1>
         <p className="mt-3 opacity-60">Every tool runs in your browser. No uploads. No server. Privacy first.</p>
-        <div className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full"
-          style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}>
-          <Sparkles size={11} /> PDF to Word &amp; PDF to Excel — Powered by Claude AI
+        <div className="mt-4 flex flex-wrap justify-center gap-2">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full"
+            style={{ background: 'var(--accent)', color: 'var(--accent-fg)' }}>
+            <Sparkles size={11} /> PDF to Word · PDF to Excel · PDF to EPUB — AI powered
+          </div>
         </div>
       </div>
 
